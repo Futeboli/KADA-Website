@@ -62,3 +62,21 @@ mostrarDoisDepoimentos();
 
 // ⏱️ Avança automaticamente a cada 6 segundos
 setInterval(avancarDepoimento, 6000);
+
+const carrossel = document.getElementById('carrossel');
+const btnLeft = document.querySelector('.btn-nav.left');
+const btnRight = document.querySelector('.btn-nav.right');
+
+btnLeft.addEventListener('click', () => {
+  carrossel.scrollBy({
+    left: -300,
+    behavior: 'smooth'
+  });
+});
+
+btnRight.addEventListener('click', () => {
+  carrossel.scrollBy({
+    left: 300,
+    behavior: 'smooth'
+  });
+});

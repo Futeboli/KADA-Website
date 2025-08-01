@@ -288,6 +288,71 @@
     box-shadow: 0 0 10px var(--accent-color);
   }
 
+
+  /*Carrossel 2*/
+
+  .carrossel-section {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+  }
+  
+  .carrossel-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .carrossel-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .carrossel {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 10px;
+  }
+  
+  .carrossel::-webkit-scrollbar {
+    display: none; /* remove a barra de rolagem */
+  }
+  
+  .carrossel img {
+    height: 200px;
+    flex: 0 0 auto;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+  
+  .carrossel img:hover {
+    transform: scale(1.05);
+  }
+  
+  .btn-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 10;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  }
+  
+  .btn-nav.left {
+    left: 10px;
+  }
+  
+  .btn-nav.right {
+    right: 10px;
+  }
+
 /* Seção News e Mais Serviços */
 .news .cards,
 .servicos .cards {
