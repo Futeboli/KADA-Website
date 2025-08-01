@@ -378,3 +378,81 @@
   background-color: var(--primary-color);
   transform: translateY(-3px);
 }
+/* --- Ajuste para exibir 2 depoimentos por vez --- */
+.depoimentos .carrossel {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.item-card {
+  flex: 1 1 calc(50% - 30px);
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+  display: none;
+  justify-content: center;
+}
+
+.item-card.ativo {
+  display: flex;
+  opacity: 1;
+}
+
+
+.card-depoimento {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.3);
+  max-width: 700px;
+  text-align: center;
+}
+
+.card-depoimento p {
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+.card-depoimento span {
+  font-weight: 500;
+  color: var(--accent-color);
+}
+
+.dots-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background-color: #444;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.dot:hover {
+  background-color: var(--accent-color);
+  transform: scale(1.1);
+}
+
+.dot.active {
+  background-color: var(--accent-color);
+  box-shadow: 0 0 10px var(--accent-color);
+}
+
+@media (max-width: 768px) {
+  .item-card {
+    flex: 1 1 100%;
+  }
+}
