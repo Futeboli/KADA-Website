@@ -390,15 +390,11 @@
 }
 
 .item-card {
-  flex: 1 1 calc(50% - 30px);
-  opacity: 0;
-  transition: opacity 0.6s ease-in-out;
-  pointer-events: none;
+  flex: 0 0 calc(50% - 30px);
+  display: none;
 }
-
 .item-card.ativo {
-  opacity: 1;
-  pointer-events: all;
+  display: block;
 }
 
 .card-depoimento {
