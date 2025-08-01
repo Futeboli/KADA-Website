@@ -211,33 +211,24 @@
   }
   
   /* Seção Sobre */
-  .sobre .valores {
+  .about-content {
     display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin-top: 40px;
-    flex-wrap: wrap;
-  }
-  
-  .sobre .valores div {
-    font-size: 1.2em;
-    font-weight: 500;
-    text-align: center;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    padding: 20px 30px;
-    border-radius: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .sobre .valores div:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0)
-  }
+    gap: 40px; 
+    align-items: flex-start; 
+    text-align: left; 
+}
 
-  #Formulario-home{
-    border:2px solid #FFFF;
-  }
+.about-content p {
+    flex: 1; 
+    margin-bottom: 0; 
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column; 
+    }
+}
 
   /* --- Carrossel de Imagens --- */
 .carrossel-imagens {
