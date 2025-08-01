@@ -24,45 +24,41 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-const depoimentosCarrossel = document.querySelector('#depoimentos .carrossel');
-const depoimentos = depoimentosCarrossel.querySelectorAll('.item-card');
-const depoimentosDots = document.querySelectorAll('#depoimentos .dot');
+// Seleciona elementos
+const depoimentos = document.querySelectorAll('.item-card');
+const depoimentosDots = document.querySelectorAll('.dot');
 let depoIndex = 0;
 
+// Mostra dois depoimentos por vez
 function mostrarDoisDepoimentos() {
-  // Desativa todos
-  depoimentos.forEach(item => {
-    item.classList.remove('ativo');
-  });
-
-  // Ativa dois depoimentos: atual e o próximo
   const total = depoimentos.length;
 
-  // Corrige caso tenha número ímpar e evite repetir o último duas vezes
-  const primeiro = depoIndex % total;
-  const segundo = (primeiro + 1) % total;
+  // Remove todas as classes
+  depoimentos.forEach(item => item.classList.remove('ativo'));
+  depoimentosDots.forEach(dot => dot.classList.remove('active'));
 
+  // Calcula os dois índices ativos
+  const primeiro = depoIndex;
+  const segundo = (depoIndex + 1) % total;
+
+  // Ativa os dois depoimentos visíveis
   depoimentos[primeiro].classList.add('ativo');
   depoimentos[segundo].classList.add('ativo');
 
-  // Atualiza os dots (mostra onde começou o par)
-  depoimentosDots.forEach((dot, i) => {
-    dot.classList.toggle('active', i === primeiro);
-  });
+  // Ativa o dot correspondente ao primeiro
+  if (depoimentosDots[primeiro]) {
+    depoimentosDots[primeiro].classList.add('active');
+  }
 }
 
-// Clique nos dots para navegar manualmente
-depoimentosDots.forEach((dot, i) => {
-  dot.addEventListener('click', () => {
-    depoIndex = i;
-    mostrarDoisDepoimentos();
-  });
-});
-
-// Auto-rotação a cada 6 segundos
-setInterval(() => {
-  depoIndex = (depoIndex + 2) % depoimentos.length;
+// Avança com looping infinito
+function avancarDepoimento() {
+  depoIndex = (depoIndex + 1) % depoimentos.length;
   mostrarDoisDepoimentos();
-}, 6000);
+}
 
+// Inicializa carrossel
 mostrarDoisDepoimentos();
+
+// ⏱️ Avança automaticamente a cada 6 segundos
+setInterval(avancarDepoimento, 6000);
