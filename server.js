@@ -1,5 +1,4 @@
-// Simple email server for handling contact form submissions
-require('dotenv').config(); // For loading environment variables
+require('dotenv').config(); 
 const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
@@ -8,21 +7,10 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
-app.use(cors()); // Enable CORS for all routes
-app.use(bodyParser.json()); // Parse JSON bodies
-app.use(express.static('.')); // Serve static files from current directory
+app.use(cors()); 
+app.use(bodyParser.json()); 
+app.use(express.static('.')); 
 
-// Email transporter configuration
-const transporter = nodemailer.createTransport({
-  service: 'gmail', // You can change this to another service
-  auth: {
-    user: process.env.EMAIL_USER || 'your_email@example.com', // Replace with your email
-    pass: process.env.EMAIL_PASS || 'your-app-password' // Use app password for Gmail
-  }
-});
-
-// Handle contact form submissions
 app.post('/send-email', async (req, res) => {
   const { name, email, message } = req.body;
   
@@ -31,10 +19,9 @@ app.post('/send-email', async (req, res) => {
   }
 
   try {
-    // Email options
     const mailOptions = {
       from: email,
-      to: process.env.RECIPIENT_EMAIL || 'contato@novasoft.com', // Replace with your company email
+      to: process.env.RECIPIENT_EMAIL || 'contato@novasoft.com', // MUDAR
       subject: `Novo contato do site - ${name}`,
       html: `
         <h3>Nova mensagem de contato</h3>
@@ -45,7 +32,6 @@ app.post('/send-email', async (req, res) => {
       `
     };
 
-    // Send email
     await transporter.sendMail(mailOptions);
     
     return res.status(200).json({ success: true, message: 'Mensagem enviada com sucesso!' });
@@ -55,7 +41,6 @@ app.post('/send-email', async (req, res) => {
   }
 });
 
-// Start the server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
