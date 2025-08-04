@@ -1,9 +1,9 @@
 // EmailJS Configuration
 (function() {
   // https://www.emailjs.com/docs/sdk/installation/
-  const PUBLIC_KEY = "YOUR_EMAILJS_PUBLIC_KEY"; // Replace with your EmailJS public key
-  const SERVICE_ID = "YOUR_EMAILJS_SERVICE_ID"; // Replace with your EmailJS service ID
-  const TEMPLATE_ID = "YOUR_EMAILJS_TEMPLATE_ID"; // Replace with your EmailJS template ID
+  const PUBLIC_KEY = "your_emailjs_public_key"; // SUBSTITUA com sua chave pública do EmailJS
+  const SERVICE_ID = "your_emailjs_service_id"; // SUBSTITUA com seu ID de serviço do EmailJS
+  const TEMPLATE_ID = "your_emailjs_template_id"; // SUBSTITUA com seu ID de template do EmailJS
   
   // Initialize EmailJS with your public key
   emailjs.init(PUBLIC_KEY);

@@ -17,7 +17,7 @@ app.use(express.static('.')); // Serve static files from current directory
 const transporter = nodemailer.createTransport({
   service: 'gmail', // You can change this to another service
   auth: {
-    user: process.env.EMAIL_USER || 'company@novasoft.com', // Replace with your email
+    user: process.env.EMAIL_USER || 'your_email@example.com', // Replace with your email
     pass: process.env.EMAIL_PASS || 'your-app-password' // Use app password for Gmail
   }
 });

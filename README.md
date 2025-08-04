@@ -14,6 +14,18 @@ Este é o website da empresa NovaSoft, com informações sobre serviços, depoim
 
 O formulário de contato tem três métodos de funcionamento, em ordem de prioridade:
 
+### IMPORTANTE: Segurança para Github
+
+**Antes de fazer upload para o Github:**
+- Os arquivos de configuração foram sanitizados para remover dados sensíveis.
+- Você DEVE configurar suas informações pessoais conforme as instruções abaixo.
+- NÃO faça commit do arquivo `.env` ou de arquivos de configuração com suas credenciais reais.
+- Considere adicionar estes arquivos ao seu `.gitignore`:
+  ```
+  .env
+  emailjs-config.js
+  ```
+
 ### 1. Servidor Node.js (Requer configuração)
 
 Para habilitar o envio de emails via servidor Node.js:
@@ -23,11 +35,11 @@ Para habilitar o envio de emails via servidor Node.js:
 npm install
 ```
 
-2. Configure o arquivo `.env` com seus dados:
+2. Crie um arquivo `.env` com seus dados (não incluído no GitHub):
 ```
 EMAIL_USER=seu_email@gmail.com
 EMAIL_PASS=sua_senha_app
-RECIPIENT_EMAIL=contato@novasoft.com
+RECIPIENT_EMAIL=contato@empresa.com
 PORT=3000
 ```
 
@@ -44,7 +56,7 @@ Se não estiver usando o servidor Node.js, o site tentará usar o EmailJS:
 
 1. Crie uma conta no [EmailJS](https://www.emailjs.com/)
 2. Configure um serviço de email e um template
-3. Atualize o arquivo `emailjs-config.js` com suas credenciais:
+3. Atualize o arquivo `emailjs-config.js` com suas credenciais (não inclua no GitHub):
 ```javascript
 const PUBLIC_KEY = "sua_chave_publica";
 const SERVICE_ID = "seu_service_id";
