@@ -305,7 +305,7 @@
 .slider-infinite {
     display: flex;
     width: calc(250px * 12); /* 12 slides total (6 originais + 6 duplicados) */
-    animation: scroll-infinite 20s linear infinite;
+    animation: scroll-infinite 40s linear infinite;
   }
 
   @keyframes scroll-infinite {
