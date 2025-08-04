@@ -427,6 +427,35 @@
   background-color: var(--primary-color);
   transform: translateY(-3px);
 }
+
+.contato button:disabled {
+  background-color: #666;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.form-status {
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: 500;
+  display: none;
+}
+
+.form-status.success {
+  display: block;
+  background-color: rgba(0, 128, 0, 0.2);
+  color: #00ff00;
+  border: 1px solid rgba(0, 128, 0, 0.5);
+}
+
+.form-status.error {
+  display: block;
+  background-color: rgba(255, 0, 0, 0.2);
+  color: #ff5555;
+  border: 1px solid rgba(255, 0, 0, 0.5);
+}
 /* --- Ajuste para exibir 2 depoimentos por vez --- */
 .depoimentos .carrossel {
   display: flex;

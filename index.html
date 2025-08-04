@@ -179,10 +179,11 @@
   <section id="contato" class="contato">
       <h2>Entre em contato</h2>
       <form id="Formulario-home">
-          <input type="text" placeholder="Nome" required>
-          <input type="email" placeholder="E-mail" required>
-          <textarea placeholder="Mensagem" required></textarea>
-          <button type="submit">Enviar</button>
+          <input type="text" id="contact-name" placeholder="Nome" required>
+          <input type="email" id="contact-email" placeholder="E-mail" required>
+          <textarea id="contact-message" placeholder="Mensagem" required></textarea>
+          <button type="submit" id="contact-submit">Enviar</button>
+          <div id="form-status" class="form-status"></div>
       </form>
   </section>
 
@@ -196,6 +197,9 @@
   <a href="https://wa.me/5541992143478?text=..." class="whatsapp-float" target="_blank">
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/2044px-WhatsApp.svg.png" alt="WhatsApp">
   </a>
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script defer src="emailjs-config.js"></script>
   <script defer src="index.js"></script>
   </body>
   </html>

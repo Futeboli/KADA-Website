@@ -1,1 +1,62 @@
-# Porftolio
+# NovaSoft - Website
+
+Este é o website da empresa NovaSoft, com informações sobre serviços, depoimentos e formulário de contato.
+
+## Funcionalidades
+
+- Design moderno com temática escura e neon
+- Carrosséis de imagens e depoimentos
+- Seções de serviços e sobre nós
+- Formulário de contato funcional
+- Botão flutuante de WhatsApp
+
+## Configuração do Formulário de Contato
+
+O formulário de contato tem três métodos de funcionamento, em ordem de prioridade:
+
+### 1. Servidor Node.js (Requer configuração)
+
+Para habilitar o envio de emails via servidor Node.js:
+
+1. Instale as dependências:
+```
+npm install
+```
+
+2. Configure o arquivo `.env` com seus dados:
+```
+EMAIL_USER=seu_email@gmail.com
+EMAIL_PASS=sua_senha_app
+RECIPIENT_EMAIL=contato@novasoft.com
+PORT=3000
+```
+
+3. Inicie o servidor:
+```
+npm start
+```
+
+**Nota**: Para Gmail, você precisa usar uma "senha de app" gerada nas configurações de segurança da sua conta Google.
+
+### 2. EmailJS (Requer configuração)
+
+Se não estiver usando o servidor Node.js, o site tentará usar o EmailJS:
+
+1. Crie uma conta no [EmailJS](https://www.emailjs.com/)
+2. Configure um serviço de email e um template
+3. Atualize o arquivo `emailjs-config.js` com suas credenciais:
+```javascript
+const PUBLIC_KEY = "sua_chave_publica";
+const SERVICE_ID = "seu_service_id";
+const TEMPLATE_ID = "seu_template_id";
+```
+
+### 3. LocalStorage (Fallback)
+
+Se os métodos anteriores falharem, os dados do formulário serão armazenados localmente no navegador do usuário (localStorage), e você verá as mensagens no console do navegador.
+
+## Personalização
+
+- Altere as cores em `index.css` na seção `:root` 
+- Atualize o número do WhatsApp no arquivo `index.html`
+- Substitua as imagens na pasta `img` por suas próprias imagens

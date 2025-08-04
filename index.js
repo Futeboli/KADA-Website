@@ -78,15 +78,112 @@ if (testimonials.length > 0) {
 // Formulário de contato
 const form = document.getElementById('Formulario-home');
 if (form) {
-    form.addEventListener('submit', function(e) {
+    const formStatus = document.getElementById('form-status');
+    
+    form.addEventListener('submit', async function(e) {
         e.preventDefault();
         
-        // Aqui você pode adicionar a lógica para enviar o formulário
-        alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+        // Obter valores do formulário
+        const name = document.getElementById('contact-name').value;
+        const email = document.getElementById('contact-email').value;
+        const message = document.getElementById('contact-message').value;
         
-        // Limpar formulário
-        form.reset();
+        // Botão de enviar
+        const submitButton = document.getElementById('contact-submit');
+        const originalText = submitButton.textContent;
+        
+        // Alterar texto do botão e desabilitar
+        submitButton.textContent = 'Enviando...';
+        submitButton.disabled = true;
+        
+        // Limpar status anterior
+        formStatus.className = 'form-status';
+        formStatus.style.display = 'none';
+        
+        try {
+            // Tentar enviar via API
+            let success = false;
+            
+            try {
+                // Primeiro, tentar enviar via API local (server.js)
+                try {
+                    const response = await fetch('/send-email', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ name, email, message }),
+                        timeout: 5000 // Timeout de 5 segundos
+                    });
+                    
+                    if (response.ok) {
+                        const data = await response.json();
+                        success = data.success;
+                        showStatus(success, data.message);
+                    } else {
+                        throw new Error('Falha na resposta do servidor');
+                    }
+                } catch (apiError) {
+                    console.log('Erro na API local, tentando EmailJS', apiError);
+                    
+                    // Segundo, tentar enviar via EmailJS se disponível
+                    if (window.sendWithEmailJS) {
+                        const emailJsResult = await window.sendWithEmailJS(name, email, message);
+                        success = emailJsResult.success;
+                        showStatus(success, emailJsResult.message);
+                    } else {
+                        // Terceiro fallback: Armazenar localmente
+                        const timestamp = new Date().toISOString();
+                        const contactData = { name, email, message, timestamp };
+                        
+                        // Armazenar dados no localStorage
+                        const savedMessages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
+                        savedMessages.push(contactData);
+                        localStorage.setItem('contactMessages', JSON.stringify(savedMessages));
+                        
+                        // Logging para debug
+                        console.log('Mensagem armazenada localmente:', contactData);
+                        
+                        // Mostrar sucesso para melhor UX
+                        showStatus(true, 'Mensagem enviada com sucesso! Entraremos em contato em breve.');
+                        success = true;
+                    }
+                }
+            } catch (error) {
+                console.error('Todos os métodos de envio falharam:', error);
+                showStatus(false, 'Não foi possível enviar sua mensagem. Por favor, tente novamente mais tarde ou entre em contato pelo WhatsApp.');
+            }
+            
+            // Se for bem sucedido, limpar o formulário
+            if (success) {
+                form.reset();
+            }
+        } catch (error) {
+            console.error('Erro ao processar envio:', error);
+            showStatus(false, 'Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente mais tarde.');
+        } finally {
+            // Restaurar texto do botão e habilitar
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
+        }
     });
+    
+    // Função para mostrar mensagens de status
+    function showStatus(success, message) {
+        formStatus.textContent = message;
+        formStatus.className = `form-status ${success ? 'success' : 'error'}`;
+        formStatus.style.display = 'block';
+        
+        // Rolar até a mensagem de status
+        formStatus.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        
+        // Esconder após 5 segundos
+        if (success) {
+            setTimeout(() => {
+                formStatus.style.display = 'none';
+            }, 5000);
+        }
+    }
 }
 
 // Smooth scroll para links de navegação
