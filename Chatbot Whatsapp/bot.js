@@ -8,6 +8,7 @@ const modoConversaPath = './modoConversa.json';
 
 const donos = ['5511999999999@s.whatsapp.net'];
 
+// Inicializar arquivo pedidos
 function inicializarArquivoPedidos() {
     if (!fs.existsSync(pedidosPath)) {
         console.log("📁 Criando arquivo pedidos.json...");
@@ -15,12 +16,14 @@ function inicializarArquivoPedidos() {
     }
 }
 
+// Gerar ID sequencial para pedidos
 function gerarNovoId(pedidos) {
     if (pedidos.length === 0) return 1;
     const ids = pedidos.map(p => p.id || 0);
     return Math.max(...ids) + 1;
 }
 
+// Funções para pedidos
 function salvarPedidos(pedidos) {
     fs.writeFileSync(pedidosPath, JSON.stringify(pedidos, null, 2));
 }
@@ -37,6 +40,7 @@ function clienteTemPedidoAtivo(numero) {
     return pedidos.some(p => p.numero === numero && p.status === 'ativo');
 }
 
+// Funções para modo conversa
 function lerModoConversa() {
     if (!fs.existsSync(modoConversaPath)) {
         fs.writeFileSync(modoConversaPath, JSON.stringify([]));
@@ -67,6 +71,7 @@ function isModoConversaAtivo(numero) {
     return lista.includes(numero);
 }
 
+// Perguntas para pedido
 const questions = [
     "1️⃣ Qual o seu Nome/Empresa?",
     "2️⃣ Qual o seu e-mail?",
@@ -140,12 +145,13 @@ async function startBot() {
                 await sock.sendMessage(sender, {
                     text: `✅ Pedido registrado com sucesso!
 
-                            🧑 Nome/Empresa: ${session.data.nome}
-                            📧 E-mail: ${session.data.email}
-                            🛠️ Serviço: ${session.data.servico}
+🧑 Nome/Empresa: ${session.data.nome}
+📧 E-mail: ${session.data.email}
+🛠️ Serviço: ${session.data.servico}
 
-                            Em breve entraremos em contato.`
+Em breve entraremos em contato.`
                 });
+
                 salvarPedido({
                     numero: sender,
                     ...session.data,
@@ -159,6 +165,7 @@ async function startBot() {
             return;
         }
 
+        // Ignora responder saudações se modo conversa estiver ativo
         if (!isModoConversaAtivo(sender)) {
             const saudacoesEncontradas = saudações.some(s => messageText.includes(s));
             if (saudacoesEncontradas) {
@@ -169,6 +176,7 @@ async function startBot() {
             }
         }
 
+        // Se o usuário quiser iniciar pedido (apenas se a mensagem for exatamente "pedido")
         if (messageText === 'pedido') {
             if (clienteTemPedidoAtivo(sender)) {
                 await sock.sendMessage(sender, {

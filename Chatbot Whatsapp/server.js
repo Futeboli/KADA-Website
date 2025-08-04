@@ -129,9 +129,9 @@ app.post('/modo-conversa/toggle', (req, res) => {
     let lista = lerModoConversa();
 
     if (lista.includes(numero)) {
-        lista = lista.filter(n => n !== numero); 
+        lista = lista.filter(n => n !== numero); // desativa
     } else {
-        lista.push(numero); 
+        lista.push(numero); // ativa
     }
 
     salvarModoConversa(lista);
