@@ -6,12 +6,6 @@ yarn-error.log
 package-lock.json
 yarn.lock
 
-# Arquivos de ambiente (contém informações sensíveis)
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
 
 # Arquivos de configuração com dados sensíveis
 emailjs-config.js
