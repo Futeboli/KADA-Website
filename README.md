@@ -1,6 +1,6 @@
 # K.A.D.A. Systems - Website
 
-Este é o website da empresa NovaSoft, com informações sobre serviços, depoimentos e formulário de contato.
+Este é o website da empresa K.A.D.A. Systems, com informações sobre serviços, depoimentos e formulário de contato.
 
 ## Funcionalidades
 
