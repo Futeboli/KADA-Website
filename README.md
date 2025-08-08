@@ -72,3 +72,5 @@ Se os métodos anteriores falharem, os dados do formulário serão armazenados l
 - Altere as cores em `index.css` na seção `:root` 
 - Atualize o número do WhatsApp no arquivo `index.html`
 - Substitua as imagens na pasta `img` por suas próprias imagens
+
+- admin senha: @dmin*c@o
