@@ -42,7 +42,7 @@ if (slides.length > 0) {
     }, 5000);
 }
 
-// === CARROSSEL DE DEPOIMENTOS COM TRANSIÇÕES SUAVES ===
+// === CARROSSEL DE DEPOIMENTOS  ===
 let currentTestimonial = 0;
 const testimonials = document.querySelectorAll('.item-card');
 const testimonialDots = document.querySelectorAll('.dots-container .dot');
