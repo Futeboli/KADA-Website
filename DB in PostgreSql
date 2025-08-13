@@ -1,15 +1,27 @@
-CREATE TABLE usuarios (
-    id SERIAL PRIMARY KEY,
-    email VARCHAR(255) UNIQUE NOT NULL,
-    senha VARCHAR(255) NOT NULL
-);
+--CREATE TABLE usuarios (
+  --  id SERIAL PRIMARY KEY,
+   -- email VARCHAR(255) UNIQUE NOT NULL,
+  -- senha VARCHAR(255) NOT NULL
+--);
+
+--CREATE TABLE pedidos (
+ --   id SERIAL PRIMARY KEY,
+ --   id_usuario INT NOT NULL,
+ --   descricao TEXT NOT NULL,
+ --   foi_atendido BOOLEAN DEFAULT FALSE,
+ --   foi_resolvido BOOLEAN DEFAULT FALSE,
+ --   data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ --   FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE
+--);
+
+COD novo sem a tabela usuarios
 
 CREATE TABLE pedidos (
     id SERIAL PRIMARY KEY,
-    id_usuario INT NOT NULL,
-    descricao TEXT NOT NULL,
+    nome VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    mensagem TEXT NOT NULL,
     foi_atendido BOOLEAN DEFAULT FALSE,
     foi_resolvido BOOLEAN DEFAULT FALSE,
-    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE
+    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
