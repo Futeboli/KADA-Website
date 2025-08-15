@@ -1,33 +1,121 @@
-// Menu Hambúrguer
+/ JavaScript integrado - K.A.D.A. Systems com funcionalidades da Ubistart e Tab Menu
+
+// Efeito de scroll no header (adaptado para o novo header)
 document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.getElementById('menu-toggle');
-    const navMenu = document.getElementById('nav-menu');
-    const navLinks = document.querySelectorAll('nav a');
-
-    // Toggle do menu
-    menuToggle.addEventListener('click', function() {
-        menuToggle.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
-
-    // Fechar menu ao clicar em um link
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            menuToggle.classList.remove('active');
-            navMenu.classList.remove('active');
-        });
-    });
-
-    // Fechar menu ao clicar fora
-    document.addEventListener('click', function(event) {
-        if (!menuToggle.contains(event.target) && !navMenu.contains(event.target)) {
-            menuToggle.classList.remove('active');
-            navMenu.classList.remove('active');
+    const header = document.querySelector('.header');
+    
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
         }
     });
 });
 
-// Carrossel de Imagens (Projetos)
+// Funcionalidade do Tab Menu - NOVA IMPLEMENTAÇÃO OTIMIZADA
+document.addEventListener('DOMContentLoaded', function() {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    // Função para ativar uma aba específica
+    function activateTab(targetTab) {
+        // Remove active de todos os botões
+        tabButtons.forEach(btn => {
+            btn.classList.remove('active');
+            btn.style.color = 'rgba(224, 224, 224, 0.7)';
+            btn.style.borderBottom = '2px solid transparent';
+        });
+        
+        // Remove active de todos os conteúdos
+        tabContents.forEach(content => {
+            content.classList.remove('active');
+        });
+        
+        // Ativa o botão clicado
+        targetTab.classList.add('active');
+        targetTab.style.color = '#fff';
+        targetTab.style.borderBottom = '2px solid var(--accent-color)';
+        
+        // Ativa o conteúdo correspondente
+        const targetId = targetTab.getAttribute('data-tab');
+        const targetContent = document.getElementById(targetId);
+        if (targetContent) {
+            targetContent.classList.add('active');
+        }
+    }
+    
+    // Event listeners para os botões das abas
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Só executa se a aba não estiver já ativa
+            if (!this.classList.contains('active')) {
+                activateTab(this);
+            }
+        });
+        
+        // Adiciona suporte para navegação por teclado (acessibilidade)
+        button.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                if (!this.classList.contains('active')) {
+                    activateTab(this);
+                }
+            }
+        });
+        
+        // Torna os botões focáveis para acessibilidade
+        button.setAttribute('tabindex', '0');
+        button.setAttribute('role', 'tab');
+        button.setAttribute('aria-selected', button.classList.contains('active') ? 'true' : 'false');
+    });
+    
+    // Configura os conteúdos para acessibilidade
+    tabContents.forEach(content => {
+        content.setAttribute('role', 'tabpanel');
+        content.setAttribute('aria-hidden', content.classList.contains('active') ? 'false' : 'true');
+    });
+    
+    // Inicialização: garante que a primeira aba esteja ativa
+    if (tabButtons.length > 0 && !document.querySelector('.tab-button.active')) {
+        activateTab(tabButtons[0]);
+    }
+});
+
+// Efeito de fundo interativo (seguindo o mouse) - Mantido do original
+document.addEventListener('DOMContentLoaded', function() {
+    let mouseX = 0;
+    let mouseY = 0;
+    
+    document.addEventListener('mousemove', function(e) {
+        mouseX = (e.clientX / window.innerWidth) * 100;
+        mouseY = (e.clientY / window.innerHeight) * 100;
+        
+        // Aplicar efeito sutil no padrão de fundo
+        const backgroundPattern = document.querySelector('.background-pattern');
+        if (backgroundPattern) {
+            backgroundPattern.style.transform = `translate(${mouseX * 0.02}px, ${mouseY * 0.02}px)`;
+        }
+    });
+});
+
+// Carrossel infinito - Mantido do original
+document.addEventListener('DOMContentLoaded', function() {
+    const sliderInfinite = document.querySelector('.slider-infinite');
+    
+    if (sliderInfinite) {
+        // Pausar animação ao hover
+        sliderInfinite.addEventListener('mouseenter', function() {
+            this.style.animationPlayState = 'paused';
+        });
+        
+        sliderInfinite.addEventListener('mouseleave', function() {
+            this.style.animationPlayState = 'running';
+        });
+    }
+});
+
+// Carrossel de Imagens (Projetos) - Mantido do original
 document.addEventListener('DOMContentLoaded', function() {
     const sliderContainer = document.querySelector('.slider-container');
     const slides = document.querySelectorAll('.slide-item');
@@ -36,15 +124,12 @@ document.addEventListener('DOMContentLoaded', function() {
     let slideInterval;
 
     function showSlide(index) {
-        // Remove active class from all dots
         navDots.forEach(dot => dot.classList.remove('active'));
         
-        // Add active class to current dot
         if (navDots[index]) {
             navDots[index].classList.add('active');
         }
         
-        // Move slider
         if (sliderContainer) {
             sliderContainer.style.transform = `translateX(-${index * 100}%)`;
         }
@@ -65,20 +150,17 @@ document.addEventListener('DOMContentLoaded', function() {
         clearInterval(slideInterval);
     }
 
-    // Add click events to navigation dots
     navDots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
             showSlide(index);
             stopSlideshow();
-            startSlideshow(); // Restart slideshow
+            startSlideshow();
         });
     });
 
-    // Start automatic slideshow
     if (slides.length > 0) {
         startSlideshow();
         
-        // Pause on hover
         const carrosselImagens = document.querySelector('.carrossel-imagens');
         if (carrosselImagens) {
             carrosselImagens.addEventListener('mouseenter', stopSlideshow);
@@ -87,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Carrossel de Depoimentos
+// Carrossel de Depoimentos - Mantido do original
 document.addEventListener('DOMContentLoaded', function() {
     const depoimentoCards = document.querySelectorAll('.item-card');
     const depoimentoDots = document.querySelectorAll('.dots-container .dot');
@@ -95,13 +177,11 @@ document.addEventListener('DOMContentLoaded', function() {
     let depoimentoInterval;
 
     function showDepoimento(index) {
-        // Remove active class from all cards and dots
         depoimentoCards.forEach(card => {
             card.classList.remove('ativo', 'saindo');
         });
         depoimentoDots.forEach(dot => dot.classList.remove('active'));
 
-        // Add active class to current card and dot
         if (depoimentoCards[index]) {
             depoimentoCards[index].classList.add('ativo');
         }
@@ -115,7 +195,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function nextDepoimento() {
         const nextIndex = (currentDepoimento + 1) % depoimentoCards.length;
         
-        // Add exit animation to current card
         if (depoimentoCards[currentDepoimento]) {
             depoimentoCards[currentDepoimento].classList.add('saindo');
         }
@@ -133,11 +212,9 @@ document.addEventListener('DOMContentLoaded', function() {
         clearInterval(depoimentoInterval);
     }
 
-    // Add click events to depoimento dots
     depoimentoDots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
             if (index !== currentDepoimento) {
-                // Add exit animation to current card
                 if (depoimentoCards[currentDepoimento]) {
                     depoimentoCards[currentDepoimento].classList.add('saindo');
                 }
@@ -147,16 +224,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, 300);
                 
                 stopDepoimentoSlideshow();
-                startDepoimentoSlideshow(); // Restart slideshow
+                startDepoimentoSlideshow();
             }
         });
     });
 
-    // Start automatic slideshow for depoimentos
     if (depoimentoCards.length > 0) {
         startDepoimentoSlideshow();
         
-        // Pause on hover
         const depoimentosSection = document.querySelector('.depoimentos');
         if (depoimentosSection) {
             depoimentosSection.addEventListener('mouseenter', stopDepoimentoSlideshow);
@@ -165,7 +240,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Smooth scrolling para links internos
+// Smooth scrolling para links internos - Adaptado para o novo header
 document.addEventListener('DOMContentLoaded', function() {
     const links = document.querySelectorAll('a[href^="#"]');
     
@@ -177,7 +252,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetSection = document.querySelector(targetId);
             
             if (targetSection) {
-                const headerHeight = document.querySelector('header').offsetHeight;
+                const headerHeight = document.querySelector('.header').offsetHeight;
                 const targetPosition = targetSection.offsetTop - headerHeight - 20;
                 
                 window.scrollTo({
@@ -189,20 +264,34 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Header scroll effect
+// Funcionalidade do botão CTA (nova funcionalidade da Ubistart)
 document.addEventListener('DOMContentLoaded', function() {
-    const header = document.querySelector('header');
+    const ctaButton = document.querySelector('.cta-button');
+    const contactBtn = document.querySelector('.contact-btn');
     
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 100) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
+    function scrollToContact() {
+        const contactSection = document.querySelector('#contato');
+        if (contactSection) {
+            const headerHeight = document.querySelector('.header').offsetHeight;
+            const targetPosition = contactSection.offsetTop - headerHeight - 20;
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
         }
-    });
+    }
+    
+    if (ctaButton) {
+        ctaButton.addEventListener('click', scrollToContact);
+    }
+    
+    if (contactBtn) {
+        contactBtn.addEventListener('click', scrollToContact);
+    }
 });
 
-// Formulário de contato (mantendo funcionalidade original se existir)
+// Formulário de contato - Mantido do original
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('Formulario-home');
     const formStatus = document.getElementById('form-status');
@@ -216,7 +305,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const message = document.getElementById('contact-message').value;
             
             if (name && email && message) {
-                // Aqui você pode integrar com EmailJS ou outro serviço
                 if (formStatus) {
                     formStatus.innerHTML = '<p style="color: #8a2be2;">Mensagem enviada com sucesso!</p>';
                     form.reset();
@@ -238,9 +326,61 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Otimizações para touch devices
+// Animações de entrada para elementos (nova funcionalidade)
 document.addEventListener('DOMContentLoaded', function() {
-    // Adicionar classe para dispositivos touch
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    // Elementos para animar
+    const animatedElements = document.querySelectorAll('.servicos .card, .card-depoimento, .info-box');
+    
+    animatedElements.forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(30px)';
+        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        
+        observer.observe(element);
+    });
+});
+
+// Efeito parallax suave para o padrão de fundo
+document.addEventListener('DOMContentLoaded', function() {
+    let ticking = false;
+    
+    function updateParallax() {
+        const scrolled = window.pageYOffset;
+        const backgroundPattern = document.querySelector('.background-pattern');
+        
+        if (backgroundPattern) {
+            const speed = 0.5;
+            const yPos = -(scrolled * speed);
+            backgroundPattern.style.transform = `translateY(${yPos}px)`;
+        }
+        
+        ticking = false;
+    }
+    
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            requestAnimationFrame(updateParallax);
+            ticking = true;
+        }
+    }, { passive: true });
+});
+
+// Otimizações para dispositivos touch - Mantido do original
+document.addEventListener('DOMContentLoaded', function() {
     if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
         document.body.classList.add('touch-device');
     }
@@ -249,10 +389,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let ticking = false;
     
     function updateOnScroll() {
-        // Throttle scroll events
         if (!ticking) {
             requestAnimationFrame(function() {
-                // Scroll effects aqui
                 ticking = false;
             });
             ticking = true;
@@ -262,7 +400,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', updateOnScroll, { passive: true });
 });
 
-// Lazy loading para imagens (se necessário)
+// Lazy loading para imagens - Mantido do original
 document.addEventListener('DOMContentLoaded', function() {
     if ('IntersectionObserver' in window) {
         const imageObserver = new IntersectionObserver((entries, observer) => {
@@ -283,7 +421,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Prevenção de zoom em inputs em iOS
+// Prevenção de zoom em inputs em iOS - Mantido do original
 document.addEventListener('DOMContentLoaded', function() {
     if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
         const inputs = document.querySelectorAll('input, textarea, select');
@@ -297,3 +435,62 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Funcionalidade do seletor de idioma (nova funcionalidade da Ubistart)
+document.addEventListener('DOMContentLoaded', function() {
+    const languageSelector = document.querySelector('.language-selector');
+    
+    if (languageSelector) {
+        languageSelector.addEventListener('click', function() {
+            // Aqui você pode implementar a funcionalidade de troca de idioma
+            console.log('Seletor de idioma clicado');
+            // Por exemplo, abrir um dropdown com opções de idioma
+        });
+    }
+});
+
+// Efeitos de hover aprimorados para cards
+document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.servicos .card, .card-depoimento, .info-box');
+    
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-8px) scale(1.02)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+});
+
+// Inicialização completa
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('K.A.D.A. Systems - Site carregado com funcionalidades da Ubistart e Tab Menu integrados!');
+    
+    // Verificar se todos os elementos necessários estão presentes
+    const requiredElements = [
+        '.header',
+        '.background-pattern',
+        '.hero-title',
+        '.info-box',
+        '.tab-button',
+        '.tab-content'
+    ];
+    
+    requiredElements.forEach(selector => {
+        const element = document.querySelector(selector);
+        if (!element) {
+            console.warn(`Elemento não encontrado: ${selector}`);
+        }
+    });
+    
+    // Verificar funcionalidade das abas
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    if (tabButtons.length > 0 && tabContents.length > 0) {
+        console.log(`✓ ${tabButtons.length} botões de aba e ${tabContents.length} conteúdos encontrados e configurados`);
+    } else {
+        console.warn('⚠ Elementos do tab menu não encontrados');
+    }
+});

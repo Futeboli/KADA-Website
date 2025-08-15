@@ -5,31 +5,82 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Agência K.A.D.A.</title>
   <link rel="stylesheet" href="index.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Padrão de fundo ondulado -->
+    <div class="background-pattern"></div>
     
-    <header>
-        <div class="logo">K.A.D.A. Systems</div>
-        <div class="menu-toggle" id="menu-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
+    <!-- Header da Ubistart adaptado -->
+    <header class="header">
+        <div class="container">
+            <!-- Logo K.A.D.A. Systems -->
+            <div class="logo">K.A.D.A. Systems</div>
+            
+            <!-- Navegação -->
+            <nav class="nav">
+                <a href="#sobre" class="nav-link">Sobre</a>
+                <a href="#servicos" class="nav-link">Serviços</a>
+                <a href="#depoimentos" class="nav-link">Depoimentos</a>
+                <a href="#contato" class="nav-link">Contato</a>
+            </nav>
+            
+            <!-- Lado direito do header - Adaptado -->
+            <div class="header-right">
+                <!-- Seletor de idioma - Mantido para consistência, mas pode ser removido se não for necessário -->
+                <div class="language-selector">
+                    <div class="flag-brazil">🇧🇷</div>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                
+                <!-- Botão de contato -->
+                <button class="contact-btn">Contato</button>
+            </div>
         </div>
-        <nav id="nav-menu">
-            <ul>
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#servicos">Serviços</a></li>
-                <li><a href="#depoimentos">Depoimentos</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
-        </nav>
-  </header>
-  
-  <section class="hero">
-      <h1>Desenvolvimento de Software sob Medida</h1>
-      <p>Transformamos ideias em soluções digitais seguras e escaláveis.</p>
-      <a href="#servicos" class="btn">Conheça nossos serviços</a>
-    </section>
+    </header>
+    
+    <!-- Conteúdo principal da Ubistart adaptado -->
+    <main class="main">
+        <div class="container">
+            <div class="content-grid">
+                <!-- Lado esquerdo - Título principal -->
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        Transformações<br>
+                        reais com software.<br>
+                        <span class="highlight">On demand.</span>
+                    </h1>
+                    
+                    <button class="cta-button">
+                        Fale com um expert
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.16667 10H15.8333M15.8333 10L10.8333 5M15.8333 10L10.8333 15" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Lado direito - Card de informações com novo tab menu -->
+                <div class="info-section">
+                    <div class="info-box">
+                        <div class="tab-menu">
+                            <button class="tab-button active" data-tab="desenvolver">Quero desenvolver</button>
+                            <button class="tab-button" data-tab="tenho-software">Já tenho software</button>
+                        </div>
+
+                        <div id="desenvolver" class="tab-content active">
+                            <p>A K.A.D.A ajuda empresas a conquistar seu mercado entregando análise, construção e implementação de software, com agilidade, inovação e personalização.</p>
+                        </div>
+
+                        <div id="tenho-software" class="tab-content">
+                            <p>A K.A.D.A oferece suporte técnico, melhorias contínuas e integração com novas tecnologias para tornar sua solução mais eficiente e moderna.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
   <section class="carrossel-infinite">
      <div class="slider-infinite">
@@ -208,4 +259,3 @@
 <script src="index.js"></script>
 </body>
 </html>
-
