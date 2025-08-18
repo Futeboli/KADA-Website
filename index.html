@@ -1,191 +1,247 @@
 <!DOCTYPE html>
-  <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agência K.A.D.A.</title>
-    <link rel="stylesheet" href="index.css">
-  </head>
-  <body>
-      
-      <header>
-          <div class="logo">KADASystems</div>
-          <nav>
-              <ul>
-                  <li><a href="#sobre">Sobre</a></li>
-                  <li><a href="#servicos">Serviços</a></li>
-                  <li><a href="#depoimentos">Depoimentos</a></li>
-                  <li><a href="#contato">Contato</a></li>
-              </ul>
-          </nav>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agência K.A.D.A.</title>
+  <link rel="stylesheet" href="index.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Padrão de fundo ondulado -->
+    <div class="background-pattern"></div>
+    
+    <!-- Header da Ubistart adaptado -->
+    <header class="header">
+        <div class="container">
+            <!-- Logo K.A.D.A. Systems -->
+            <div class="logo">K.A.D.A. Systems</div>
+            
+            <!-- Navegação -->
+            <nav class="nav">
+                <a href="#sobre" class="nav-link">Sobre</a>
+                <a href="#servicos" class="nav-link">Serviços</a>
+                <a href="#depoimentos" class="nav-link">Depoimentos</a>
+                <a href="#contato" class="nav-link">Contato</a>
+            </nav>
+            
+            <!-- Lado direito do header - Adaptado -->
+            <div class="header-right">
+                <!-- Seletor de idioma - Mantido para consistência, mas pode ser removido se não for necessário -->
+                <div class="language-selector">
+                    <div class="flag-brazil">🇧🇷</div>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                
+                <!-- Botão de contato -->
+                <button class="contact-btn">Contato</button>
+            </div>
+        </div>
     </header>
     
-    <section class="hero">
-        <h1>Desenvolvimento de Software sob Medida</h1>
-        <p>Transformamos ideias em soluções digitais seguras e escaláveis.</p>
-        <a href="#servicos" class="btn">Conheça nossos serviços</a>
-      </section>
+    <!-- Conteúdo principal da Ubistart adaptado -->
+    <main class="main">
+        <div class="container">
+            <div class="content-grid">
+                <!-- Lado esquerdo - Título principal -->
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        Transformações<br>
+                        reais com software.<br>
+                        <span class="highlight">On demand.</span>
+                    </h1>
+                    
+                    <button class="cta-button">
+                        Fale com um expert
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.16667 10H15.8333M15.8333 10L10.8333 5M15.8333 10L10.8333 15" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Lado direito - Card de informações com novo tab menu -->
+                <div class="info-section">
+                    <div class="info-box">
+                        <div class="tab-menu">
+                            <button class="tab-button active" data-tab="desenvolver">Quero desenvolver</button>
+                            <button class="tab-button" data-tab="tenho-software">Já tenho software</button>
+                        </div>
 
-    <section class="carrossel-infinite">
-       <div class="slider-infinite">
+                        <div id="desenvolver" class="tab-content active">
+                            <p>A K.A.D.A ajuda empresas a conquistar seu mercado entregando análise, construção e implementação de software, com agilidade, inovação e personalização.</p>
+                        </div>
 
-          <div class="slide-infinite">
-            <img src="./img/imagem-1.jpeg" alt="">
-          </div>
-          <div class="slide-infinite">
-            <img src="./img/imagem-2.jpeg" alt="">
-          </div>
-          <div class="slide-infinite">
-            <img src="./img/imagem-3.jpeg" alt="">
-          </div>
-          <div class="slide-infinite">
-            <img src="./img/imagem-4.jpeg" alt="">
-          </div>
-          <div class="slide-infinite">
-            <img src="./img/imagem-5.jpeg" alt="">
-          </div>
-          <div class="slide-infinite">
-            <img src="./img/imagem-6.jpeg" alt="">
-          </div>
+                        <div id="tenho-software" class="tab-content">
+                            <p>A K.A.D.A oferece suporte técnico, melhorias contínuas e integração com novas tecnologias para tornar sua solução mais eficiente e moderna.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
-          <!--Img duplicadas-->
+  <section class="carrossel-infinite">
+     <div class="slider-infinite">
 
-          <div class="slide-infinite">
-            <img src="./img/imagem-1.jpeg" alt="">
-          </div>
-          <div class="slide-infinite">
-            <img src="./img/imagem-2.jpeg" alt="">
-          </div>
-          <div class="slide-infinite">
-            <img src="./img/imagem-3.jpeg" alt="">
-          </div>
-          <div class="slide-infinite">
-            <img src="./img/imagem-4.jpeg" alt="">
-          </div>
-          <div class="slide-infinite">
-            <img src="./img/imagem-5.jpeg" alt="">
-          </div>
-          <div class="slide-infinite">
-            <img src="./img/imagem-6.jpeg" alt="">
-          </div>
+        <div class="slide-infinite">
+          <img src="./img/imagem-1.jpeg" alt="">
+        </div>
+        <div class="slide-infinite">
+          <img src="./img/imagem-2.jpeg" alt="">
+        </div>
+        <div class="slide-infinite">
+          <img src="./img/imagem-3.jpeg" alt="">
+        </div>
+        <div class="slide-infinite">
+          <img src="./img/imagem-4.jpeg" alt="">
+        </div>
+        <div class="slide-infinite">
+          <img src="./img/imagem-5.jpeg" alt="">
+        </div>
+        <div class="slide-infinite">
+          <img src="./img/imagem-6.jpeg" alt="">
+        </div>
 
-       </div>
-      
-    </section>
-      
-      <section id="sobre" class="sobre">
-        <h2>Sobre Nós</h2>
-        <div class="about-content">
-            <p>Somos um grupo de amigos apaixonados por tecnologia que cursou Desenvolvimento de Sistemas em uma escola pública do Paraná. Durante nossa formação, descobrimos não apenas o poder da programação, mas também o valor do trabalho em equipe, da criatividade e do desejo genuíno de transformar ideias em soluções reais.
-              Unimos nossas habilidades técnicas com visão empreendedora e, com o apoio da equipe administrativa da escola, decidimos dar um passo além da sala de aula. Criamos um projeto focado em desenvolver sistemas e ferramentas digitais para empresas de todos os tamanhos — desde pequenos empreendimentos locais até negócios de médio e grande porte.
-            
-            Trabalhamos com uma ampla gama de linguagens e tecnologias, incluindo Java, Python, HTML, CSS, JavaScript e muito mais. Essa diversidade técnica nos permite entregar soluções sob medida, modernas e funcionais, sempre com preços justos e acessíveis.
-            Nosso principal objetivo é alavancar o crescimento de nossos clientes por meio da inovação.
-            </p>
+        <!--Img duplicadas-->
+
+        <div class="slide-infinite">
+          <img src="./img/imagem-1.jpeg" alt="">
+        </div>
+        <div class="slide-infinite">
+          <img src="./img/imagem-2.jpeg" alt="">
+        </div>
+        <div class="slide-infinite">
+          <img src="./img/imagem-3.jpeg" alt="">
+        </div>
+        <div class="slide-infinite">
+          <img src="./img/imagem-4.jpeg" alt="">
+        </div>
+        <div class="slide-infinite">
+          <img src="./img/imagem-5.jpeg" alt="">
+        </div>
+        <div class="slide-infinite">
+          <img src="./img/imagem-6.jpeg" alt="">
+        </div>
+
+     </div>
     
-            <p>  Acreditamos que todo negócio merece acesso a ferramentas digitais eficientes, seja para otimizar processos internos, melhorar a comunicação com seus clientes ou conquistar novos mercados.
-            
-            A equipe administrativa da escola nos incentivou desde o início, oferecendo apoio estratégico e ajudando a moldar nossa mentalidade voltada para resultados e excelência. Hoje, levamos esse espírito adiante, mantendo o compromisso de sempre dar o nosso melhor em cada projeto.
-            
-            Mais do que colegas de curso, nos tornamos uma equipe unida por propósito. Somos ativos, curiosos, comprometidos e prontos para enfrentar qualquer desafio tecnológico que nos seja apresentado. Enxergamos cada demanda como uma chance de crescer, aprender e entregar valor de verdade.
-            
-            Se você procura inovação com responsabilidade, parceria de verdade e soluções eficientes, você está no lugar certo. Estamos prontos para transformar sua ideia em realidade — com tecnologia, dedicação e muito entusiasmo.</p>
+  </section>
+    
+    <section id="sobre" class="sobre">
+      <h2>Sobre Nós</h2>
+      <div class="about-content">
+          <p>Somos um grupo de amigos apaixonados por tecnologia que cursou Desenvolvimento de Sistemas em uma escola pública do Paraná. Durante nossa formação, descobrimos não apenas o poder da programação, mas também o valor do trabalho em equipe, da criatividade e do desejo genuíno de transformar ideias em soluções reais.
+            Unimos nossas habilidades técnicas com visão empreendedora e, com o apoio da equipe administrativa da escola, decidimos dar um passo além da sala de aula. Criamos um projeto focado em desenvolver sistemas e ferramentas digitais para empresas de todos os tamanhos — desde pequenos empreendimentos locais até negócios de médio e grande porte.
+          
+          Trabalhamos com uma ampla gama de linguagens e tecnologias, incluindo Java, Python, HTML, CSS, JavaScript e muito mais. Essa diversidade técnica nos permite entregar soluções sob medida, modernas e funcionais, sempre com preços justos e acessíveis.
+          Nosso principal objetivo é alavancar o crescimento de nossos clientes por meio da inovação.
+          </p>
+
+          <p>  Acreditamos que todo negócio merece acesso a ferramentas digitais eficientes, seja para otimizar processos internos, melhorar a comunicação com seus clientes ou conquistar novos mercados.
+          
+          A equipe administrativa da escola nos incentivou desde o início, oferecendo apoio estratégico e ajudando a moldar nossa mentalidade voltada para resultados e excelência. Hoje, levamos esse espírito adiante, mantendo o compromisso de sempre dar o nosso melhor em cada projeto.
+          
+          Mais do que colegas de curso, nos tornamos uma equipe unida por propósito. Somos ativos, curiosos, comprometidos e prontos para enfrentar qualquer desafio tecnológico que nos seja apresentado. Enxergamos cada demanda como uma chance de crescer, aprender e entregar valor de verdade.
+          
+          Se você procura inovação com responsabilidade, parceria de verdade e soluções eficientes, você está no lugar certo. Estamos prontos para transformar sua ideia em realidade — com tecnologia, dedicação e muito entusiasmo.</p>
+      </div>
+  </section>
+    
+    <section id="servicos" class="servicos">
+        <h2>Nossos Serviços</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>Consultoria Estratégica</h3>
+                <p>Análise de necessidades e planejamento digital.</p>
+            </div>
+      <div class="card">
+          <h3>Software Personalizado</h3>
+          <p>Web e mobile com alto desempenho e usabilidade.</p>
         </div>
-    </section>
-      
-      <section id="servicos" class="servicos">
-          <h2>Nossos Serviços</h2>
-          <div class="cards">
-              <div class="card">
-                  <h3>Consultoria Estratégica</h3>
-                  <p>Análise de necessidades e planejamento digital.</p>
-              </div>
         <div class="card">
-            <h3>Software Personalizado</h3>
-            <p>Web e mobile com alto desempenho e usabilidade.</p>
-          </div>
-          <div class="card">
-              <h3>Integrações e APIs</h3>
-              <p>Conectamos sistemas com segurança e flexibilidade.</p>
-          </div>
-      </div>
-  </section>
+            <h3>Integrações e APIs</h3>
+            <p>Conectamos sistemas com segurança e flexibilidade.</p>
+        </div>
+    </div>
+</section>
 
-  <section class="carrossel-imagens">
-      <h2>Nossos Projetos e Ferramentas</h2>
-      <div class="slider-container">
-        <div class="slide-item">
-          <img src="https://source.unsplash.com/800x600/?coding,computer" alt="Imagem de código em um computador">
-        </div>
-        <div class="slide-item">
-          <img src="https://source.unsplash.com/800x600/?programming,setup" alt="Configuração de programação">
-        </div>
-        <div class="slide-item">
-          <img src="https://source.unsplash.com/800x600/?developer,desktop" alt="Mesa de desenvolvedor">
-        </div>
-        <div class="slide-item">
-          <img src="https://source.unsplash.com/800x600/?software,workstation" alt="Estação de trabalho de software">
-        </div>
-        <div class="slide-item">
-          <img src="https://source.unsplash.com/800x600/?development,monitor" alt="Código em vários monitores">
-        </div>
+<section class="carrossel-imagens">
+    <h2>Nossos Projetos e Ferramentas</h2>
+    <div class="slider-container">
+      <div class="slide-item">
+        <img src="https://source.unsplash.com/800x600/?coding,computer" alt="Imagem de código em um computador">
       </div>
-      <div class="slider-nav">
-        <span class="nav-dot active"></span>
-        <span class="nav-dot"></span>
-        <span class="nav-dot"></span>
-        <span class="nav-dot"></span>
-        <span class="nav-dot"></span>
+      <div class="slide-item">
+        <img src="https://source.unsplash.com/800x600/?programming,setup" alt="Configuração de programação">
       </div>
-    </section>
-
-    <!--Depoimentos-->
-  <section id="depoimentos" class="depoimentos">
-    <h2>O que dizem nossos clientes</h2>
-    <div class="carrossel">
-      <div class="item-card ativo">
-        <div class="card-depoimento">
-          <p>"A equipe da K.A.D.A. Systems entregou um sistema impecável! Estamos mais eficientes do que nunca."</p>
-          <span>— João Mendes, TechNova</span>
-        </div>
+      <div class="slide-item">
+        <img src="https://source.unsplash.com/800x600/?developer,desktop" alt="Mesa de desenvolvedor">
       </div>
-      <div class="item-card">
-        <div class="card-depoimento">
-          <p>"Desde o primeiro contato com a K.A.D.A., senti confiança e profissionalismo. Recomendo demais!"</p>
-          <span>— Camila Rocha, AutoByte</span>
-        </div>
+      <div class="slide-item">
+        <img src="https://source.unsplash.com/800x600/?software,workstation" alt="Estação de trabalho de software">
       </div>
-      <div class="item-card">
-        <div class="card-depoimento">
-          <p>"A inteligência artificial aplicada trouxe resultados surpreendentes em nossa análise de dados feita pela K.A.D.A. Systems."</p>
-          <span>— Rafael Lima, Neurovia</span>
-        </div>
-      </div>
-      <div class="item-card">
-        <div class="card-depoimento">
-          <p>"Excelente trabalho! A equipe da K.A.D.A. é muito competente e o resultado final ficou incrível. Definitivamente voltaremos a trabalhar juntos em futuros projetos."</p>
-          <span>— Dean Sanches, PNHUB</span>
-        </div>
+      <div class="slide-item">
+        <img src="https://source.unsplash.com/800x600/?development,monitor" alt="Código em vários monitores">
       </div>
     </div>
-    <div class="dots-container">
-      <span class="dot active"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
+    <div class="slider-nav">
+      <span class="nav-dot active"></span>
+      <span class="nav-dot"></span>
+      <span class="nav-dot"></span>
+      <span class="nav-dot"></span>
+      <span class="nav-dot"></span>
     </div>
   </section>
-  <!--Depoimentos Fim-->
-  <section id="contato" class="contato">
-      <h2>Entre em contato</h2>
-      <form id="Formulario-home">
-          <input type="text" id="contact-name" placeholder="Nome" required>
-          <input type="email" id="contact-email" placeholder="E-mail" required>
-          <textarea id="contact-message" placeholder="Mensagem" required></textarea>
-          <button type="submit" id="contact-submit">Enviar</button>
-          <div id="form-status" class="form-status"></div>
-      </form>
-  </section>
+
+  <!--Depoimentos-->
+<section id="depoimentos" class="depoimentos">
+  <h2>O que dizem nossos clientes</h2>
+  <div class="carrossel">
+    <div class="item-card ativo">
+      <div class="card-depoimento">
+        <p>"A equipe da K.A.D.A. Systems entregou um sistema impecável! Estamos mais eficientes do que nunca."</p>
+        <span>— João Mendes, TechNova</span>
+      </div>
+    </div>
+    <div class="item-card">
+      <div class="card-depoimento">
+        <p>"Desde o primeiro contato com a K.A.D.A., senti confiança e profissionalismo. Recomendo demais!"</p>
+        <span>— Camila Rocha, AutoByte</span>
+      </div>
+    </div>
+    <div class="item-card">
+      <div class="card-depoimento">
+        <p>"A inteligência artificial aplicada trouxe resultados surpreendentes em nossa análise de dados feita pela K.A.D.A. Systems."</p>
+        <span>— Rafael Lima, Neurovia</span>
+      </div>
+    </div>
+    <div class="item-card">
+      <div class="card-depoimento">
+        <p>"Excelente trabalho! A equipe da K.A.D.A. é muito competente e o resultado final ficou incrível. Definitivamente voltaremos a trabalhar juntos em futuros projetos."</p>
+        <span>— Dean Sanches, PNHUB</span>
+      </div>
+    </div>
+  </div>
+  <div class="dots-container">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+</section>
+<!--Depoimentos Fim-->
+<section id="contato" class="contato">
+    <h2>Entre em contato</h2>
+    <form id="Formulario-home">
+        <input type="text" id="contact-name" placeholder="Nome" required>
+        <input type="email" id="contact-email" placeholder="E-mail" required>
+        <textarea id="contact-message" placeholder="Mensagem" required></textarea>
+        <button type="submit" id="contact-submit">Enviar</button>
+        <div id="form-status" class="form-status"></div>
+    </form>
+</section>
 
   <footer>
       <p>© 2025 K.A.D.A. Systems - Todos os direitos reservados</p>
@@ -199,11 +255,10 @@
   </a>
   <!-- EmailJS SDK -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-  <!--<script defer src="emailjs-config.js"></script>-->
-  <script defer src="index.js"></script>
-  <!--<script type="module" src="dbNovaSoft/db.js"></script>-->
-  <!--<script type="module" src="dbNovaSoft/server.js"></script>-->
-  <script type="module" src="dbNovaSoft\users.js"></script>
+  <script defer src="emailjs-config.js"></script>
+  <!--<script defer src="index.js"></script>-->
+  <script src="db.js"></script>
+  <script src="server.js"></script>
+  <script src="user.js"></script>
   </body>
   </html>
-  
