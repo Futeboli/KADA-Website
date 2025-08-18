@@ -1,13 +1,13 @@
-const express = require('express');
-const router = express.Router();
-const db = require('../db');
+import { Router } from 'express';
+const router = Router();
+import { query } from '../db';
 
 // Criar novo pedido
 router.post('/cadastro', async (req, res) => {
   const { nome, email, mensagem } = req.body;
 
   try {
-    const result = await db.query(
+    const result = await query(
       'INSERT INTO pedidos (nome, email, mensagem) VALUES ($1, $2, $3) RETURNING *',
       [nome, email, mensagem]
     );
@@ -21,7 +21,7 @@ router.post('/cadastro', async (req, res) => {
 // Listar todos os pedidos
 router.get('/', async (req, res) => {
   try {
-    const result = await db.query('SELECT * FROM pedidos ORDER BY data_criacao DESC');
+    const result = await query('SELECT * FROM pedidos ORDER BY data_criacao DESC');
     res.json(result.rows);
   } catch (err) {
     console.error(err);
@@ -35,7 +35,7 @@ router.put('/:id/status', async (req, res) => {
   const { id } = req.params;
 
   try {
-    const result = await db.query(
+    const result = await query(
       'UPDATE pedidos SET foi_atendido = $1, foi_resolvido = $2 WHERE id = $3 RETURNING *',
       [foi_atendido, foi_resolvido, id]
     );
@@ -51,4 +51,4 @@ router.put('/:id/status', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;
