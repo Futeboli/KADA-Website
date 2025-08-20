@@ -489,30 +489,6 @@ h2 {
   -webkit-text-fill-color: transparent;
 }
 
-/* Sobre */
-.sobre {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 100px 40px;
-}
-
-.about-content {
-  display: grid;
-  gap: 30px;
-  font-size: 18px;
-  line-height: 1.8;
-  text-align: justify;
-}
-
-.about-content p {
-  background: rgba(26, 26, 54, 0.4);
-  backdrop-filter: blur(10px);
-  padding: 30px;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
-
 /* Serviços */
 .servicos {
   max-width: 1200px;
