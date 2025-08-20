@@ -1,5 +1,7 @@
-require('dotenv').config();
+import dotenv from 'dotenv';
 import { Pool } from 'pg';
+
+dotenv.config();
 
 class DatabaseConnection {
   constructor() {
@@ -15,70 +17,53 @@ class DatabaseConnection {
         host: process.env.DB_HOST,
         port: process.env.DB_PORT || 5432,
         database: process.env.DB_NAME,
-        // Configurações do pool para melhor performance
+        // Configurações do pool
         max: 20, // máximo de conexões no pool
-        idleTimeoutMillis: 30000, // timeout de conexões idle
-        connectionTimeoutMillis: 2000, // timeout para nova conexão
-        // SSL para produção (opcional)
-        ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
+        idleTimeoutMillis: 30000, // timeout de conexões inativas
+        connectionTimeoutMillis: 2000, // tempo máximo para tentar conectar
       });
 
-      // Teste de conexão
-      const client = await this.pool.connect();
-      console.log('✅ Conexão com PostgreSQL estabelecida com sucesso!');
-      client.release();
       this.isConnected = true;
-
-      // Event listeners para monitoramento
-      this.pool.on('error', (err) => {
-        console.error('❌ Erro inesperado no pool de conexões:', err);
-        this.isConnected = false;
-      });
-
-      this.pool.on('connect', () => {
-        console.log('🔗 Nova conexão estabelecida no pool');
-      });
-
-    } catch (error) {
-      console.error('❌ Erro ao conectar com PostgreSQL:', error.message);
+      console.log('✅ Conectado ao banco de dados PostgreSQL');
+    } catch (err) {
+      console.error('❌ Erro ao conectar no banco:', err);
       this.isConnected = false;
-      throw error;
-    }
-  }
-
-  async query(text, params) {
-    if (!this.isConnected) {
-      throw new Error('Banco de dados não conectado');
-    }
-    
-    const start = Date.now();
-    try {
-      const result = await this.pool.query(text, params);
-      const duration = Date.now() - start;
-      console.log(`🔍 Query executada em ${duration}ms: ${text}`);
-      return result;
-    } catch (error) {
-      console.error('❌ Erro na query:', error);
-      throw error;
-    }
-  }
-
-  async healthCheck() {
-    try {
-      await this.query('SELECT 1');
-      return { status: 'healthy', timestamp: new Date().toISOString() };
-    } catch (error) {
-      return { status: 'unhealthy', error: error.message, timestamp: new Date().toISOString() };
     }
   }
 
   async disconnect() {
-    if (this.pool) {
-      await this.pool.end();
-      console.log('🔌 Conexão com PostgreSQL encerrada');
+    try {
+      if (this.pool) {
+        await this.pool.end();
+        console.log('🔌 Conexão com banco encerrada');
+      }
       this.isConnected = false;
+    } catch (err) {
+      console.error('❌ Erro ao encerrar conexão:', err);
     }
+  }
+
+  async query(text, params) {
+    if (!this.pool) {
+      throw new Error('Banco não conectado. Use connect() primeiro.');
+    }
+    return this.pool.query(text, params);
+  }
+
+  healthCheck(req, res) {
+    res.status(200).json({
+      status: this.isConnected ? 'connected' : 'disconnected',
+      database: process.env.DB_NAME,
+    });
   }
 }
 
-export default new DatabaseConnection();
+const db = new DatabaseConnection();
+
+// Exporta funções que o server.js espera
+export const connect = () => db.connect();
+export const disconnect = () => db.disconnect();
+export const healthCheck = (req, res) => db.healthCheck(req, res);
+
+// Também exporta a instância para usar em outras rotas
+export default db;
