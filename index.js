@@ -1,4 +1,4 @@
-/ JavaScript integrado - K.A.D.A. Systems com funcionalidades da Ubistart e Tab Menu
+// JavaScript integrado - K.A.D.A. Systems com funcionalidades da Ubistart e Tab Menu
 
 // Efeito de scroll no header (adaptado para o novo header)
 document.addEventListener('DOMContentLoaded', function() {
