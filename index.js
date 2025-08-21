@@ -13,11 +13,20 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Funcionalidade do Tab Menu - NOVA IMPLEMENTAÇÃO OTIMIZADA
-document.addEventListener('DOMContentLoaded', function() {
-    const tabButtons = document.querySelectorAll('.tab-button');
-    const tabContents = document.querySelectorAll('.tab-content');
-    
+// Funcionalidade do Tab Menu
+const buttons = document.querySelectorAll('.tab-button');
+  const contents = document.querySelectorAll('.tab-content');
+
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      
+      buttons.forEach(btn => btn.classList.remove('active'));
+      contents.forEach(content => content.classList.remove('active'));
+
+      button.classList.add('active');
+      document.getElementById(button.dataset.tab).classList.add('active');
+    });
+  });
     // Função para ativar uma aba específica
     function activateTab(targetTab) {
         // Remove active de todos os botões
@@ -494,18 +503,3 @@ document.addEventListener('DOMContentLoaded', function() {
         console.warn('⚠ Elementos do tab menu não encontrados');
     }
 });
-
-const buttons = document.querySelectorAll('.tab-button');
-  const contents = document.querySelectorAll('.tab-content');
-
-  buttons.forEach(button => {
-    button.addEventListener('click', () => {
-      // remove 'active' de todos
-      buttons.forEach(btn => btn.classList.remove('active'));
-      contents.forEach(content => content.classList.remove('active'));
-
-      // adiciona 'active' no botão clicado
-      button.classList.add('active');
-      document.getElementById(button.dataset.tab).classList.add('active');
-    });
-  });
