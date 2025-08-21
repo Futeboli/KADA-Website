@@ -13,82 +13,131 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Funcionalidade do Tab Menu
-const buttons = document.querySelectorAll('.tab-button');
-  const contents = document.querySelectorAll('.tab-content');
+// // Funcionalidade do Tab Menu - NOVA IMPLEMENTAÇÃO OTIMIZADA
+// document.addEventListener('DOMContentLoaded', function() {
+//     const tabButtons = document.querySelectorAll('.tab-button');
+//     const tabContents = document.querySelectorAll('.tab-content');
+    
+//     // Função para ativar uma aba específica
+//     function activateTab(targetTab) {
+//         // Remove active de todos os botões
+//         tabButtons.forEach(btn => {
+//             btn.classList.remove('active');
+//             btn.style.color = 'rgba(224, 224, 224, 0.7)';
+//             btn.style.borderBottom = '2px solid transparent';
+//         });
+        
+//         // Remove active de todos os conteúdos
+//         tabContents.forEach(content => {
+//             content.classList.remove('active');
+//         });
+        
+//         // Ativa o botão clicado
+//         targetTab.classList.add('active');
+//         targetTab.style.color = '#fff';
+//         targetTab.style.borderBottom = '2px solid var(--accent-color)';
+        
+//         // Ativa o conteúdo correspondente
+//         const targetId = targetTab.getAttribute('data-tab');
+//         const targetContent = document.getElementById(targetId);
+//         if (targetContent) {
+//             targetContent.classList.add('active');
+//         }
+//     }
+    
+//     // Event listeners para os botões das abas
+//     tabButtons.forEach(button => {
+//         button.addEventListener('click', function() {
+//             // Só executa se a aba não estiver já ativa
+//             if (!this.classList.contains('active')) {
+//                 activateTab(this);
+//             }
+//         });
+        
+//         // Adiciona suporte para navegação por teclado (acessibilidade)
+//         button.addEventListener('keydown', function(e) {
+//             if (e.key === 'Enter' || e.key === ' ') {
+//                 e.preventDefault();
+//                 if (!this.classList.contains('active')) {
+//                     activateTab(this);
+//                 }
+//             }
+//         });
+        
+//         // Torna os botões focáveis para acessibilidade
+//         button.setAttribute('tabindex', '0');
+//         button.setAttribute('role', 'tab');
+//         button.setAttribute('aria-selected', button.classList.contains('active') ? 'true' : 'false');
+//     });
+    
+//     // Configura os conteúdos para acessibilidade
+//     tabContents.forEach(content => {
+//         content.setAttribute('role', 'tabpanel');
+//         content.setAttribute('aria-hidden', content.classList.contains('active') ? 'false' : 'true');
+//     });
+    
+//     // Inicialização: garante que a primeira aba esteja ativa
+//     if (tabButtons.length > 0 && !document.querySelector('.tab-button.active')) {
+//         activateTab(tabButtons[0]);
+//     }
+// });
 
-  buttons.forEach(button => {
-    button.addEventListener('click', () => {
-      
-      buttons.forEach(btn => btn.classList.remove('active'));
-      contents.forEach(content => content.classList.remove('active'));
 
-      button.classList.add('active');
-      document.getElementById(button.dataset.tab).classList.add('active');
+document.addEventListener('DOMContentLoaded', function() {
+  const tabButtons = document.querySelectorAll('.tab-button');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  function activateTab(btn) {
+    // Desativa todos os botões
+    tabButtons.forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-selected', 'false');
+      // Remova estilos inline para não conflitar com o CSS
+      b.style.color = '';
+      b.style.borderBottom = '';
+    });
+
+    // Esconde todos os conteúdos
+    tabContents.forEach(c => {
+      c.classList.remove('active');
+      c.setAttribute('aria-hidden', 'true');
+    });
+
+    // Ativa o botão clicado
+    btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
+
+    // Mostra o conteúdo alvo
+    const targetId = btn.getAttribute('data-tab');
+    const targetContent = document.getElementById(targetId);
+    if (targetContent) {
+      targetContent.classList.add('active');
+      targetContent.setAttribute('aria-hidden', 'false');
+    }
+  }
+
+  // Inicialização: normaliza SEMPRE com base no botão ativo (ou o primeiro)
+  const initialBtn = document.querySelector('.tab-button.active') || tabButtons[0];
+  if (initialBtn) activateTab(initialBtn);
+
+  // Eventos
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => activateTab(button));
+
+    // Acessibilidade
+    button.setAttribute('tabindex', '0');
+    button.setAttribute('role', 'tab');
+    button.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        activateTab(button);
+      }
     });
   });
-    // Função para ativar uma aba específica
-    function activateTab(targetTab) {
-        // Remove active de todos os botões
-        tabButtons.forEach(btn => {
-            btn.classList.remove('active');
-            btn.style.color = 'rgba(224, 224, 224, 0.7)';
-            btn.style.borderBottom = '2px solid transparent';
-        });
-        
-        // Remove active de todos os conteúdos
-        tabContents.forEach(content => {
-            content.classList.remove('active');
-        });
-        
-        // Ativa o botão clicado
-        targetTab.classList.add('active');
-        targetTab.style.color = '#fff';
-        targetTab.style.borderBottom = '2px solid var(--accent-color)';
-        
-        // Ativa o conteúdo correspondente
-        const targetId = targetTab.getAttribute('data-tab');
-        const targetContent = document.getElementById(targetId);
-        if (targetContent) {
-            targetContent.classList.add('active');
-        }
-    }
-    
-    // Event listeners para os botões das abas
-    tabButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Só executa se a aba não estiver já ativa
-            if (!this.classList.contains('active')) {
-                activateTab(this);
-            }
-        });
-        
-        // Adiciona suporte para navegação por teclado (acessibilidade)
-        button.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                if (!this.classList.contains('active')) {
-                    activateTab(this);
-                }
-            }
-        });
-        
-        // Torna os botões focáveis para acessibilidade
-        button.setAttribute('tabindex', '0');
-        button.setAttribute('role', 'tab');
-        button.setAttribute('aria-selected', button.classList.contains('active') ? 'true' : 'false');
-    });
-    
-    // Configura os conteúdos para acessibilidade
-    tabContents.forEach(content => {
-        content.setAttribute('role', 'tabpanel');
-        content.setAttribute('aria-hidden', content.classList.contains('active') ? 'false' : 'true');
-    });
-    
-    // Inicialização: garante que a primeira aba esteja ativa
-    if (tabButtons.length > 0 && !document.querySelector('.tab-button.active')) {
-        activateTab(tabButtons[0]);
-    }
+
+  tabContents.forEach(content => {
+    content.setAttribute('role', 'tabpanel');
+  });
 });
 
 // Efeito de fundo interativo (seguindo o mouse) - Mantido do original
