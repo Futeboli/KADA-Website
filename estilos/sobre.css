@@ -1253,3 +1253,29 @@ footer .redes a:hover {
         font-size: 0.7rem;
     }
 }
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: #25d366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+  
+  .whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+  }
+  
+  .whatsapp-float img {
+    width: 35px;
+    height: 35px;
+  }
