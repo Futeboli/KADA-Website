@@ -12,16 +12,34 @@
     <link rel="stylesheet" href="../estilos/sobre.css">
 </head>
 <body>
-    <header>
-        <div class="logo">K.A.D.A. Systems</div>
-        <nav>
-            <ul>
-                <li><a href="../index.html">Início</a></li>
-                <li><a href="index.html#servicos">Serviços</a></li>
-                <li><a href="index.html#depoimentos">Depoimentos</a></li>
-                <li><a href="index.html#contato">Contato</a></li>
-            </ul>
-        </nav>
+     <!-- Header da Ubistart adaptado -->
+    <header class="header">
+        <div class="container">
+            <!-- Logo K.A.D.A. Systems -->
+            <div class="logo">K.A.D.A. Systems</div>
+            
+            <!-- Navegação -->
+            <nav class="nav">
+                <a href="../index.html" class="nav-link">Início</a>
+                <a href="#servicos" class="nav-link">Serviços</a>
+                <a href="#depoimentos" class="nav-link">Depoimentos</a>
+                <a href="#contato" class="nav-link">Contato</a>
+            </nav>
+            
+            <!-- Lado direito do header - Adaptado -->
+            <div class="header-right">
+                <!-- Seletor de idioma - Mantido para consistência, mas pode ser removido se não for necessário -->
+                <div class="language-selector">
+                    <div class="flag-brazil">🇧🇷</div>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                
+                <!-- Botão de contato -->
+                <button class="contact-btn">Contato</button>
+            </div>
+        </div>
     </header>
 
     <!-- Hero Section -->
@@ -212,7 +230,7 @@
                             <span class="stat-label">Tecnologias</span>
                         </div>
                         <div class="team-stat">
-                            <span class="stat-number">24/7</span>
+                            <span class="stat-number">24h</span>
                             <span class="stat-label">Suporte</span>
                         </div>
                     </div>

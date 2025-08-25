@@ -61,72 +61,113 @@ body::before {
     padding: 0 20px;
 }
 
-/* Header - Mantendo consistência */
-header {
-    background: rgba(0, 0, 0, 0.4);
-    color: #fff;
-    padding: 20px 40px;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1000;
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
+/* Header - Adaptado do design da Ubistart */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 12vh;
+  background: rgba(13, 13, 43, 0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1000;
+  transition: all 0.3s ease;
 }
 
-header.scrolled {
-    background: var(--bg-color);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+.header.scrolled {
+  background: rgba(13, 13, 43, 0.95);
+  box-shadow: 0 4px 20px rgba(138, 43, 226, 0.1);
 }
 
-header .logo {
-    font-size: 2rem;
-    font-weight: bold;
-    letter-spacing: 2px;
-    transition: color 0.3s ease;
+.container{
+  text-size-adjust: 8vh ;
 }
 
-header .logo:hover {
-    color: var(--accent-color);
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 30px;
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
 }
 
-nav a {
-    color: var(--text-color);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
-    position: relative;
+.nav {
+  display: flex;
+  gap: 40px;
 }
 
-nav a::after {
-    content: '';
-    display: block;
-    width: 0;
-    height: 2px;
-    background: var(--accent-color);
-    transition: width 0.3s ease;
-    position: absolute;
-    bottom: -5px;
-    left: 0;
+.nav-link {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
-nav a:hover {
-    color: var(--accent-color);
-    text-shadow: 0 0 5px var(--accent-color);
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent-color);
+  transition: width 0.3s ease;
 }
 
-nav a:hover::after {
-    width: 100%;
+.nav-link:hover {
+  color: #ffffff;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.language-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
+.language-selector:hover {
+  color: #ffffff;
+}
+
+.flag-brazil {
+  font-size: 20px;
+}
+
+.contact-btn {
+  background: #ffffff;
+  color: #0a0a0a;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+  background: var(--accent-color);
+  color: #ffffff;
+  transform: translateY(-2px);
 }
 
 /* Hero Section About */
@@ -1252,6 +1293,128 @@ footer .redes a:hover {
         height: 60px;
         font-size: 0.7rem;
     }
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+  .hero-title {
+    font-size: 64px;
+  }
+  
+  .content-grid {
+    gap: 80px;
+  }
+  
+  .container {
+    padding: 0 30px;
+  }
+}
+
+@media (max-width: 968px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+    text-align: center;
+  }
+  
+  .hero-title {
+    font-size: 56px;
+  }
+  
+  .nav {
+    display: none;
+  }
+  
+  .header .container {
+    padding: 16px 30px;
+  }
+
+  /* Tab menu responsivo */
+  .info-section {
+    justify-content: center;
+  }
+  
+  .tab-menu {
+    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
+    border: none;
+    text-align: center;
+  }
+  
+  .tab-button {
+    font-size: 18px;
+    padding: 16px 0;
+  }
+  
+  .info-box {
+    max-width: 100%;
+    padding: 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: 48px;
+  }
+  
+  .container {
+    padding: 0 20px;
+  }
+  
+  section {
+    padding: 60px 0;
+  }
+  
+  h2 {
+    font-size: 36px;
+  }
+  
+  .cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .header-right {
+    gap: 16px;
+  }
+  
+  .language-selector {
+    display: none;
+  }
+  
+  /* Tab menu mobile */
+  .tab-menu {
+    gap: 12px;
+  }
+  
+  .tab-button {
+    font-size: 16px;
+    padding: 12px 0;
+  }
+  
+  .tab-content {
+    font-size: 15px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 40px;
+  }
+  
+  .main {
+    padding-top: 80px;
+  }
+  
+  .info-box {
+    padding: 20px;
+  }
+  
+  .tab-content {
+    font-size: 14px;
+    line-height: 1.6;
+  }
 }
 
 .whatsapp-float {
