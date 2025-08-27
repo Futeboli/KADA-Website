@@ -932,3 +932,121 @@ footer .container {
     line-height: 1.6;
   }
 }
+
+/* Seção Principais Soluções */
+.principais-solucoes {
+  text-align: center;
+  padding: 80px 40px;
+  background: var(--bg-color);
+}
+
+.principais-solucoes h2 {
+  font-size: 2.5rem;
+  margin-bottom: 60px;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.principais-solucoes h2 span {
+  color: var(--primary-color);
+}
+
+.solucoes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.solucao-card {
+  text-align: center;
+  padding: 30px 20px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.solucao-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.solucao-card:hover::before {
+  transform: scaleX(1);
+}
+
+.solucao-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary-color);
+  box-shadow: 0 10px 30px rgba(93, 63, 211, 0.2);
+}
+
+.solucao-card i {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+.solucao-card:hover i {
+  color: var(--accent-color);
+  transform: scale(1.1);
+}
+
+.solucao-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 15px;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.solucao-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #b0b0b0;
+}
+
+/* Responsividade para a seção de soluções */
+@media (max-width: 768px) {
+  .principais-solucoes {
+    padding: 60px 20px;
+  }
+  
+  .principais-solucoes h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+  
+  .solucoes-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .solucao-card {
+    padding: 25px 15px;
+  }
+  
+  .solucao-card i {
+    font-size: 2rem;
+  }
+  
+  .solucao-card h3 {
+    font-size: 1.1rem;
+  }
+  
+  .solucao-card p {
+    font-size: 0.9rem;
+  }
+}
+
