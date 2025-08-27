@@ -29,6 +29,11 @@
                 <a href="#contato" class="nav-link">Contato</a>
             </nav>
             
+            <!-- Botão do menu hambúrguer para mobile -->
+            <button class="hamburger-menu" aria-label="Abrir menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
             <!-- Lado direito do header - Adaptado -->
             <div class="header-right">
                 <!-- Seletor de idioma - Mantido para consistência, mas pode ser removido se não for necessário -->
@@ -44,6 +49,15 @@
             </div>
         </div>
     </header>
+    
+    <!-- Navegação Mobile -->
+    <nav class="mobile-nav">
+        <a href="./Paginas/Sobre.html" class="mobile-nav-link">Sobre</a>
+        <a href="#servicos" class="mobile-nav-link">Serviços</a>
+        <a href="#depoimentos" class="mobile-nav-link">Depoimentos</a>
+        <a href="#contato" class="mobile-nav-link">Contato</a>
+        <button class="mobile-contact-btn">Contato</button>
+    </nav>
     
     <!-- Conteúdo principal da Ubistart adaptado -->
     <main class="main">
@@ -285,8 +299,8 @@
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script defer src="emailjs-config.js"></script>
   <script defer src="index.js"></script>
-  <!--<script src="db.js"></script>
+  <script src="db.js"></script>
   <script src="server.js"></script>
-  <script src="user.js"></script>-->
+  <script src="user.js"></script>
   </body>
   </html>

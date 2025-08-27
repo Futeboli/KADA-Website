@@ -13,76 +13,39 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// // Funcionalidade do Tab Menu - NOVA IMPLEMENTAÇÃO OTIMIZADA
-// document.addEventListener('DOMContentLoaded', function() {
-//     const tabButtons = document.querySelectorAll('.tab-button');
-//     const tabContents = document.querySelectorAll('.tab-content');
-    
-//     // Função para ativar uma aba específica
-//     function activateTab(targetTab) {
-//         // Remove active de todos os botões
-//         tabButtons.forEach(btn => {
-//             btn.classList.remove('active');
-//             btn.style.color = 'rgba(224, 224, 224, 0.7)';
-//             btn.style.borderBottom = '2px solid transparent';
-//         });
-        
-//         // Remove active de todos os conteúdos
-//         tabContents.forEach(content => {
-//             content.classList.remove('active');
-//         });
-        
-//         // Ativa o botão clicado
-//         targetTab.classList.add('active');
-//         targetTab.style.color = '#fff';
-//         targetTab.style.borderBottom = '2px solid var(--accent-color)';
-        
-//         // Ativa o conteúdo correspondente
-//         const targetId = targetTab.getAttribute('data-tab');
-//         const targetContent = document.getElementById(targetId);
-//         if (targetContent) {
-//             targetContent.classList.add('active');
-//         }
-//     }
-    
-//     // Event listeners para os botões das abas
-//     tabButtons.forEach(button => {
-//         button.addEventListener('click', function() {
-//             // Só executa se a aba não estiver já ativa
-//             if (!this.classList.contains('active')) {
-//                 activateTab(this);
-//             }
-//         });
-        
-//         // Adiciona suporte para navegação por teclado (acessibilidade)
-//         button.addEventListener('keydown', function(e) {
-//             if (e.key === 'Enter' || e.key === ' ') {
-//                 e.preventDefault();
-//                 if (!this.classList.contains('active')) {
-//                     activateTab(this);
-//                 }
-//             }
-//         });
-        
-//         // Torna os botões focáveis para acessibilidade
-//         button.setAttribute('tabindex', '0');
-//         button.setAttribute('role', 'tab');
-//         button.setAttribute('aria-selected', button.classList.contains('active') ? 'true' : 'false');
-//     });
-    
-//     // Configura os conteúdos para acessibilidade
-//     tabContents.forEach(content => {
-//         content.setAttribute('role', 'tabpanel');
-//         content.setAttribute('aria-hidden', content.classList.contains('active') ? 'false' : 'true');
-//     });
-    
-//     // Inicialização: garante que a primeira aba esteja ativa
-//     if (tabButtons.length > 0 && !document.querySelector('.tab-button.active')) {
-//         activateTab(tabButtons[0]);
-//     }
-// });
+// Funcionalidade do Menu Hambúrguer
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, .mobile-contact-btn');
 
+    if (hamburgerMenu && mobileNav) {
+        hamburgerMenu.addEventListener('click', function() {
+            mobileNav.classList.toggle('active');
+            // Alternar ícone do hambúrguer para 'x' e vice-versa
+            const icon = hamburgerMenu.querySelector('i');
+            if (mobileNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
 
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileNav.classList.remove('active');
+                // Restaurar ícone do hambúrguer
+                const icon = hamburgerMenu.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+    }
+});
+
+// Funcionalidade do Tab Menu - NOVA IMPLEMENTAÇÃO OTIMIZADA
 document.addEventListener('DOMContentLoaded', function() {
   const tabButtons = document.querySelectorAll('.tab-button');
   const tabContents = document.querySelectorAll('.tab-content');
@@ -326,6 +289,7 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     const ctaButton = document.querySelector('.cta-button');
     const contactBtn = document.querySelector('.contact-btn');
+    const mobileContactBtn = document.querySelector('.mobile-contact-btn');
     
     function scrollToContact() {
         const contactSection = document.querySelector('#contato');
@@ -346,6 +310,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (contactBtn) {
         contactBtn.addEventListener('click', scrollToContact);
+    }
+
+    if (mobileContactBtn) {
+        mobileContactBtn.addEventListener('click', scrollToContact);
     }
 });
 
@@ -485,70 +453,44 @@ document.addEventListener('DOMContentLoaded', function() {
         const inputs = document.querySelectorAll('input, textarea, select');
         inputs.forEach(input => {
             input.addEventListener('focus', function() {
-                if (input.style.fontSize !== '16px') {
-                    input.style.fontSize = '16px';
-                }
+                document.querySelector('meta[name=viewport]').setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1');
+            });
+            
+            input.addEventListener('blur', function() {
+                document.querySelector('meta[name=viewport]').setAttribute('content', 'width=device-width, initial-scale=1');
             });
         });
     }
 });
 
-// Funcionalidade do seletor de idioma (nova funcionalidade da Ubistart)
+// Fechar menu mobile ao clicar fora dele
 document.addEventListener('DOMContentLoaded', function() {
-    const languageSelector = document.querySelector('.language-selector');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
     
-    if (languageSelector) {
-        languageSelector.addEventListener('click', function() {
-            // Aqui você pode implementar a funcionalidade de troca de idioma
-            console.log('Seletor de idioma clicado');
-            // Por exemplo, abrir um dropdown com opções de idioma
-        });
-    }
-});
-
-// Efeitos de hover aprimorados para cards
-document.addEventListener('DOMContentLoaded', function() {
-    const cards = document.querySelectorAll('.servicos .card, .card-depoimento, .info-box');
-    
-    cards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-8px) scale(1.02)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
-});
-
-// Inicialização completa
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('K.A.D.A. Systems - Site carregado com funcionalidades da Ubistart e Tab Menu integrados!');
-    
-    // Verificar se todos os elementos necessários estão presentes
-    const requiredElements = [
-        '.header',
-        '.background-pattern',
-        '.hero-title',
-        '.info-box',
-        '.tab-button',
-        '.tab-content'
-    ];
-    
-    requiredElements.forEach(selector => {
-        const element = document.querySelector(selector);
-        if (!element) {
-            console.warn(`Elemento não encontrado: ${selector}`);
+    document.addEventListener('click', function(e) {
+        if (mobileNav && mobileNav.classList.contains('active')) {
+            if (!mobileNav.contains(e.target) && !hamburgerMenu.contains(e.target)) {
+                mobileNav.classList.remove('active');
+                const icon = hamburgerMenu.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
         }
     });
+});
+
+// Fechar menu mobile ao pressionar ESC
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileNav = document.querySelector('.mobile-nav');
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
     
-    // Verificar funcionalidade das abas
-    const tabButtons = document.querySelectorAll('.tab-button');
-    const tabContents = document.querySelectorAll('.tab-content');
-    
-    if (tabButtons.length > 0 && tabContents.length > 0) {
-        console.log(`✓ ${tabButtons.length} botões de aba e ${tabContents.length} conteúdos encontrados e configurados`);
-    } else {
-        console.warn('⚠ Elementos do tab menu não encontrados');
-    }
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && mobileNav && mobileNav.classList.contains('active')) {
+            mobileNav.classList.remove('active');
+            const icon = hamburgerMenu.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+    });
 });
