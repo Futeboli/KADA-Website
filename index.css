@@ -758,13 +758,10 @@ footer {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding: 40px 0;
   text-align: center;
-}
-
-footer .container {
-  display: flex;
-  justify-content: space-between;
+}  justify-content: center;
   align-items: center;
-  max-width: 1200px;
+  flex-direction: column;
+  text-align: center;width: 1200px;
   margin: 0 auto;
   padding: 0 40px;
 }
@@ -1049,4 +1046,43 @@ footer .container {
     font-size: 0.9rem;
   }
 }
+
+
+
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  gap: 20px;
+}
+
+
+
+footer .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+}
+
+.footer-section {
+  margin-bottom: 20px;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
 
