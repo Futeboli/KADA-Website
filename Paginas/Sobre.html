@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre Nós - K.A.D.A. Systems</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../index.css">
+    
+    <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;7a00&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../index.css">
     <link rel="stylesheet" href="../estilos/sobre.css">
 </head>
 <body>
-     <!-- Header da Ubistart adaptado -->
     <header class="header">
         <div class="container">
-            <!-- Logo K.A.D.A. Systems -->
             <div class="logo">K.A.D.A. Systems</div>
-            
-            <!-- Navegação -->
+
             <nav class="nav">
                 <a href="../index.html" class="nav-link">Início</a>
                 <a href="#historia" class="nav-link">Nossa História</a>
@@ -26,22 +26,26 @@
                 <a href="#equipe" class="nav-link">Nossa Equipe</a>
                 <a href="#tecnologias" class="nav-link">Tecnologias</a>
             </nav>
-            
-            <!-- Lado direito do header - Adaptado -->
             <div class="header-right">
-                <!-- Seletor de idioma - Mantido para consistência, mas pode ser removido se não for necessário -->
-                <div class="language-selector">
-                    <div class="flag-brazil">🇧🇷</div>
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                
-                <!-- Botão de contato -->
                 <a href="../index.html#contato" class="contact-btn">Contato</a>
+            </div>
+
+            <!-- Botão Hambúrguer -->
+            <div class="hamburger-menu" id="hamburger-menu">
+                <i class="fas fa-bars"></i>
             </div>
         </div>
     </header>
+
+    <!-- Menu Mobile -->
+    <div class="mobile-nav" id="mobile-nav">
+        <a href="../index.html" class="mobile-nav-link">Início</a>
+        <a href="#historia" class="mobile-nav-link">Nossa História</a>
+        <a href="#missao" class="mobile-nav-link">Nossa Missão</a>
+        <a href="#equipe" class="mobile-nav-link">Nossa Equipe</a>
+        <a href="#tecnologias" class="mobile-nav-link">Tecnologias</a>
+        <a href="../index.html#contato" class="mobile-contact-btn">Contato</a>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero-about">
@@ -353,7 +357,6 @@
                         </div>
                     </div>
                 </div>
-                
             </div>
         </div>
     </section>
@@ -365,8 +368,8 @@
                 <h2>Pronto para Transformar sua Ideia em Realidade?</h2>
                 <p>Entre em contato conosco e descubra como podemos ajudar sua empresa a crescer com tecnologia de ponta</p>
                 <div class="cta-buttons">
-                    <a href="index.html#contato" class="btn btn-primary">Fale Conosco</a>
-                    <a href="index.html#servicos" class="btn btn-secondary">Nossos Serviços</a>
+                    <a href="../index.html#contato" class="btn btn-primary">Fale Conosco</a>
+                    <a href="../index.html#servicos" class="btn btn-secondary">Nossos Serviços</a>
                 </div>
             </div>
         </div>
@@ -389,7 +392,7 @@
                     <h4>Contato</h4>
                     <p>📧 contato@kadasystems.com</p>
                     <p>📱 +55 (41) 99214-3478</p>
-                    <p>📍 Curitibs, Paraná, Brasil</p>
+                    <p>📍 Curitiba, Paraná, Brasil</p>
                     <p>&copy; 2025 K.A.D.A. Systems - Todos os direitos reservados</p>
                 </div>
             </div>
@@ -397,12 +400,10 @@
     </footer>
 
     <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/5541992143478?text=..." class="whatsapp-float" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/2044px-WhatsApp.svg.png" alt="WhatsApp">
-      </a>
+    <a href="https://wa.me/5541992143478?text=Olá, vim pelo site e gostaria de mais informações!" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Chamar no WhatsApp" width="35" height="35">
+    </a>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script defer src="../js/sobre.js"></script>
+    <script src="../js/sobre.js"></script>
+</body>
 </html>

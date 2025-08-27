@@ -410,3 +410,52 @@ window.KADAAbout = {
     createParticles,
     isMobile
 };
+
+
+// Funcionalidade do Menu Hambúrguer
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerMenu = document.getElementById('hamburger-menu');
+            const mobileNav = document.getElementById('mobile-nav');
+
+            if (hamburgerMenu && mobileNav) {
+                hamburgerMenu.addEventListener('click', function() {
+                    mobileNav.classList.toggle('active');
+                    const icon = hamburgerMenu.querySelector('i');
+                    if (mobileNav.classList.contains('active')) {
+                        icon.classList.replace('fa-bars', 'fa-times');
+                    } else {
+                        icon.classList.replace('fa-times', 'fa-bars');
+                    }
+                });
+
+                // Fechar ao clicar em link
+                const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, .mobile-contact-btn');
+                mobileNavLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileNav.classList.remove('active');
+                        const icon = hamburgerMenu.querySelector('i');
+                        icon.classList.replace('fa-times', 'fa-bars');
+                    });
+                });
+
+                // Fechar ao clicar fora
+                document.addEventListener('click', function(e) {
+                    if (mobileNav.classList.contains('active')) {
+                        if (!mobileNav.contains(e.target) && !hamburgerMenu.contains(e.target)) {
+                            mobileNav.classList.remove('active');
+                            const icon = hamburgerMenu.querySelector('i');
+                            icon.classList.replace('fa-times', 'fa-bars');
+                        }
+                    }
+                });
+
+                // Fechar com ESC
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+                        mobileNav.classList.remove('active');
+                        const icon = hamburgerMenu.querySelector('i');
+                        icon.classList.replace('fa-times', 'fa-bars');
+                    }
+                });
+            }
+        });
