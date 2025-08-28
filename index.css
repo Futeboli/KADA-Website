@@ -18,6 +18,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* CORREÇÃO: Previne scroll horizontal */
+  overflow-x: hidden;
 }
 
 body {
@@ -25,9 +27,12 @@ body {
   color: var(--text-color);
   background: var(--bg-color);
   line-height: 1.6;
+  /* CORREÇÃO: Previne scroll horizontal */
   overflow-x: hidden;
   position: relative;
   min-height: 100vh;
+  /* CORREÇÃO: Garante que o body não exceda a largura da viewport */
+  max-width: 100vw;
 }
 
 /* Container principal */
@@ -35,6 +40,9 @@ body {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 40px;
+  /* CORREÇÃO: Garante que o container não exceda a viewport */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Padrão de fundo ondulado com pontos - Integrado */
@@ -50,6 +58,8 @@ body {
   background-position: 0 0;
   z-index: -2;
   animation: pattern-drift 60s ease-in-out infinite;
+  /* CORREÇÃO: Previne que o padrão cause overflow */
+  overflow: hidden;
 }
 
 .background-pattern::before {
@@ -131,6 +141,8 @@ body::before {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 1000;
   transition: all 0.3s ease;
+  /* CORREÇÃO: Garante que o header não cause overflow */
+  box-sizing: border-box;
 }
 
 .header.scrolled {
@@ -143,6 +155,11 @@ body::before {
   align-items: center;
   justify-content: space-between;
   padding: 20px 40px;
+  height: 100%;
+  /* CORREÇÃO: Garante que o container do header não exceda a viewport */
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .logo {
@@ -150,11 +167,15 @@ body::before {
   font-weight: 700;
   color: #ffffff;
   text-decoration: none;
+  /* CORREÇÃO: Previne quebra de linha */
+  white-space: nowrap;
 }
 
 .nav {
   display: flex;
   gap: 40px;
+  /* CORREÇÃO: Permite quebra de linha se necessário */
+  flex-wrap: wrap;
 }
 
 .nav-link {
@@ -163,6 +184,8 @@ body::before {
   font-weight: 500;
   transition: all 0.3s ease;
   position: relative;
+  /* CORREÇÃO: Previne quebra de linha */
+  white-space: nowrap;
 }
 
 .nav-link::after {
@@ -199,6 +222,8 @@ body::before {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  /* CORREÇÃO: Previne quebra de linha */
+  white-space: nowrap;
 }
 
 .contact-btn:hover {
@@ -240,6 +265,9 @@ body::before {
   gap: 30px;
   transform: translateX(100%); /* Start off-screen */
   transition: transform 0.4s ease-in-out;
+  /* CORREÇÃO: Garante que o menu mobile não cause overflow */
+  box-sizing: border-box;
+  overflow-y: auto;
 }
 
 .mobile-nav.active {
@@ -252,6 +280,8 @@ body::before {
   font-size: 24px;
   font-weight: 500;
   transition: color 0.3s ease;
+  /* CORREÇÃO: Centraliza o texto */
+  text-align: center;
 }
 
 .mobile-nav-link:hover {
@@ -282,6 +312,9 @@ body::before {
   align-items: center;
   padding-top: 100px;
   position: relative;
+  /* CORREÇÃO: Garante que o main não cause overflow */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .content-grid {
@@ -290,10 +323,16 @@ body::before {
   gap: 120px;
   align-items: center;
   width: 100%;
+  /* CORREÇÃO: Garante que o grid não exceda a viewport */
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .hero-content {
   max-width: 600px;
+  /* CORREÇÃO: Garante que o conteúdo não exceda a viewport */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .hero-title {
@@ -304,6 +343,9 @@ body::before {
   margin-bottom: 40px;
   text-shadow: 0 0 30px rgba(138, 43, 226, 0.3);
   animation: neon-glow 3s ease-in-out infinite alternate;
+  /* CORREÇÃO: Permite quebra de linha em telas pequenas */
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 @keyframes neon-glow {
@@ -340,6 +382,8 @@ body::before {
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+  /* CORREÇÃO: Previne quebra de linha */
+  white-space: nowrap;
 }
 
 .cta-button:hover {
@@ -355,6 +399,9 @@ body::before {
   justify-content: flex-end;
   align-items: center;
   min-height: 400px;
+  /* CORREÇÃO: Garante que a seção não exceda a viewport */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .info-box {
@@ -367,6 +414,8 @@ body::before {
   padding: 32px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   position: relative;
+  /* CORREÇÃO: Garante que o box não exceda a viewport */
+  box-sizing: border-box;
 }
 
 .info-box::before {
@@ -389,6 +438,8 @@ body::before {
   margin-bottom: 24px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding-bottom: 16px;
+  /* CORREÇÃO: Permite quebra de linha em telas pequenas */
+  flex-wrap: wrap;
 }
 
 .tab-button {
@@ -403,6 +454,10 @@ body::before {
   font-family: 'Inter', sans-serif;
   font-weight: 500;
   position: relative;
+  /* CORREÇÃO: Permite quebra de linha se necessário */
+  white-space: nowrap;
+  flex: 1;
+  min-width: 120px;
 }
 
 .tab-button:hover {
@@ -456,15 +511,19 @@ body::before {
   transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
-/* Carrossel Infinito - Mantido do original */
+/* Carrossel Infinito - CORREÇÃO PRINCIPAL */
 .carrossel-infinite {
   padding: 80px 0;
+  /* CORREÇÃO: Previne overflow horizontal */
   overflow: hidden;
   background: rgba(26, 26, 54, 0.3);
   backdrop-filter: blur(10px);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
+  /* CORREÇÃO: Garante que o carrossel não exceda a viewport */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .carrossel-infinite::before {
@@ -482,18 +541,23 @@ body::before {
 
 .slider-infinite {
   display: flex;
+  /* CORREÇÃO: Ajusta a largura para ser mais responsiva */
   animation: scroll-infinite 30s linear infinite;
-  width: calc(200px * 12);
+  width: calc(220px * 12); /* Ajustado para incluir margens */
+  /* CORREÇÃO: Garante que o slider não cause overflow */
+  will-change: transform;
 }
 
 .slide-infinite {
   min-width: 200px;
   height: 120px;
-  margin: 0 20px;
+  margin: 0 10px; /* CORREÇÃO: Reduzida a margem */
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
+  /* CORREÇÃO: Garante que as imagens não excedam o container */
+  flex-shrink: 0;
 }
 
 .slide-infinite:hover {
@@ -506,15 +570,20 @@ body::before {
   object-fit: cover;
 }
 
+/* CORREÇÃO: Animação ajustada para ser mais responsiva */
 @keyframes scroll-infinite {
   0% { transform: translateX(0); }
-  100% { transform: translateX(calc(-200px * 6 - 120px)); }
+  100% { transform: translateX(calc(-220px * 6)); }
 }
 
 /* Seções principais */
 section {
   padding: 100px 0;
   position: relative;
+  /* CORREÇÃO: Garante que as seções não excedam a viewport */
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 section::before {
@@ -539,6 +608,9 @@ h2 {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  /* CORREÇÃO: Permite quebra de linha em telas pequenas */
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 /* Serviços */
@@ -546,12 +618,18 @@ h2 {
   max-width: 1200px;
   margin: 0 auto;
   padding: 100px 40px;
+  /* CORREÇÃO: Garante que a seção não exceda a viewport */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 40px;
+  /* CORREÇÃO: Garante que o grid não exceda a viewport */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .card {
@@ -564,6 +642,9 @@ h2 {
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  /* CORREÇÃO: Garante que os cards não excedam a viewport */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .card::before {
@@ -591,12 +672,16 @@ h2 {
   font-weight: 600;
   margin-bottom: 16px;
   color: #ffffff;
+  /* CORREÇÃO: Permite quebra de linha */
+  word-wrap: break-word;
 }
 
 .card p {
   font-size: 16px;
   line-height: 1.6;
   color: var(--text-color);
+  /* CORREÇÃO: Permite quebra de linha */
+  word-wrap: break-word;
 }
 
 /* Seção Principais Soluções */
@@ -604,6 +689,9 @@ h2 {
   text-align: center;
   padding: 80px 40px;
   background: var(--bg-color);
+  /* CORREÇÃO: Garante que a seção não exceda a viewport */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .principais-solucoes h2 {
@@ -623,6 +711,9 @@ h2 {
   gap: 40px;
   max-width: 1200px;
   margin: 0 auto;
+  /* CORREÇÃO: Garante que o grid não exceda a viewport */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .solucao-card {
@@ -634,6 +725,9 @@ h2 {
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  /* CORREÇÃO: Garante que os cards não excedam a viewport */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .solucao-card::before {
@@ -675,12 +769,16 @@ h2 {
   margin-bottom: 15px;
   color: var(--text-color);
   font-weight: 600;
+  /* CORREÇÃO: Permite quebra de linha */
+  word-wrap: break-word;
 }
 
 .solucao-card p {
   font-size: 0.95rem;
   line-height: 1.6;
   color: #b0b0b0;
+  /* CORREÇÃO: Permite quebra de linha */
+  word-wrap: break-word;
 }
 
 /* Depoimentos */
@@ -689,12 +787,18 @@ h2 {
   margin: 0 auto;
   padding: 100px 40px;
   text-align: center;
+  /* CORREÇÃO: Garante que a seção não exceda a viewport */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .carrossel {
   position: relative;
   height: 200px;
   margin-bottom: 40px;
+  /* CORREÇÃO: Previne overflow */
+  overflow: hidden;
+  width: 100%;
 }
 
 .item-card {
@@ -705,6 +809,8 @@ h2 {
   opacity: 0;
   transform: translateX(100px);
   transition: all 0.5s ease;
+  /* CORREÇÃO: Garante que os cards não excedam a viewport */
+  box-sizing: border-box;
 }
 
 .item-card.ativo {
@@ -725,6 +831,9 @@ h2 {
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   position: relative;
+  /* CORREÇÃO: Garante que o card não exceda a viewport */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .card-depoimento::before {
@@ -746,17 +855,23 @@ h2 {
   line-height: 1.6;
   margin-bottom: 20px;
   font-style: italic;
+  /* CORREÇÃO: Permite quebra de linha */
+  word-wrap: break-word;
 }
 
 .card-depoimento span {
   font-weight: 600;
   color: var(--accent-color);
+  /* CORREÇÃO: Permite quebra de linha */
+  word-wrap: break-word;
 }
 
 .dots-container {
   display: flex;
   justify-content: center;
   gap: 12px;
+  /* CORREÇÃO: Permite quebra de linha se necessário */
+  flex-wrap: wrap;
 }
 
 .dot {
@@ -778,6 +893,9 @@ h2 {
   max-width: 600px;
   margin: 0 auto;
   padding: 100px 40px;
+  /* CORREÇÃO: Garante que a seção não exceda a viewport */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 form {
@@ -789,6 +907,9 @@ form {
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  /* CORREÇÃO: Garante que o form não exceda a viewport */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 input, textarea {
@@ -799,6 +920,9 @@ input, textarea {
   color: #ffffff;
   font-size: 16px;
   transition: all 0.3s ease;
+  /* CORREÇÃO: Garante que os inputs não excedam a viewport */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 input:focus, textarea:focus {
@@ -826,6 +950,9 @@ button[type="submit"] {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  /* CORREÇÃO: Garante que o botão não exceda a viewport */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 button[type="submit"]:hover {
@@ -844,6 +971,9 @@ footer {
   backdrop-filter: blur(20px);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding: 40px 0;
+  /* CORREÇÃO: Garante que o footer não exceda a viewport */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 footer .container {
@@ -851,6 +981,9 @@ footer .container {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  /* CORREÇÃO: Garante que o container não exceda a viewport */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .footer-content {
@@ -859,16 +992,23 @@ footer .container {
   align-items: center;
   text-align: center;
   gap: 20px;
+  /* CORREÇÃO: Garante que o conteúdo não exceda a viewport */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .footer-section {
   margin-bottom: 20px;
+  /* CORREÇÃO: Permite quebra de linha */
+  word-wrap: break-word;
 }
 
 .social-links {
   display: flex;
   gap: 15px;
   justify-content: center;
+  /* CORREÇÃO: Permite quebra de linha se necessário */
+  flex-wrap: wrap;
 }
 
 .social-links a {
@@ -908,7 +1048,21 @@ footer .container {
   height: 35px;
 }
 
-/* Media Queries for Responsiveness */
+/* Media Queries for Responsiveness - MELHORADAS */
+@media (max-width: 1200px) {
+  .container {
+    padding: 0 30px;
+  }
+  
+  .hero-title {
+    font-size: 64px;
+  }
+  
+  .content-grid {
+    gap: 80px;
+  }
+}
+
 @media (max-width: 992px) {
   .nav, .header-right {
     display: none; /* Hide desktop nav and right section */
@@ -920,6 +1074,7 @@ footer .container {
 
   .header .container {
     justify-content: space-between; /* Adjust spacing */
+    padding: 15px 20px; /* CORREÇÃO: Reduz o padding */
   }
 
   .mobile-nav {
@@ -951,6 +1106,9 @@ footer .container {
   .tab-button {
     font-size: 18px;
     padding: 16px 0;
+    /* CORREÇÃO: Remove min-width em mobile */
+    min-width: auto;
+    flex: none;
   }
   
   .info-box {
@@ -958,21 +1116,38 @@ footer .container {
     padding: 24px;
   }
 
+  .servicos {
+    padding: 80px 20px; /* CORREÇÃO: Reduz o padding */
+  }
+
   .servicos .cards {
     grid-template-columns: 1fr;
+    gap: 30px; /* CORREÇÃO: Reduz o gap */
   }
 
   .servicos .card {
-    width: 90%;
-    margin: 0 auto;
+    width: 100%; /* CORREÇÃO: Remove largura fixa */
+    margin: 0;
+  }
+
+  .principais-solucoes {
+    padding: 60px 20px; /* CORREÇÃO: Reduz o padding */
   }
 
   .principais-solucoes .solucao-card {
     width: 100%;
   }
 
+  .depoimentos {
+    padding: 80px 20px; /* CORREÇÃO: Reduz o padding */
+  }
+
   .depoimentos .carrossel {
-    width: 90%;
+    width: 100%; /* CORREÇÃO: Remove largura fixa */
+  }
+
+  .contato {
+    padding: 80px 20px; /* CORREÇÃO: Reduz o padding */
   }
 
   .footer-content {
@@ -982,6 +1157,21 @@ footer .container {
 
   .footer-section {
     margin-bottom: 30px;
+  }
+
+  /* CORREÇÃO: Ajusta o carrossel infinito para tablets */
+  .slider-infinite {
+    width: calc(180px * 12);
+  }
+
+  .slide-infinite {
+    min-width: 160px;
+    margin: 0 10px;
+  }
+
+  @keyframes scroll-infinite {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-180px * 6)); }
   }
 }
 
@@ -1027,6 +1217,39 @@ footer .container {
   .solucao-card p {
     font-size: 0.9rem;
   }
+
+  /* CORREÇÃO: Ajusta o carrossel infinito para mobile */
+  .carrossel-infinite {
+    padding: 60px 0;
+  }
+
+  .slider-infinite {
+    width: calc(140px * 12);
+  }
+
+  .slide-infinite {
+    min-width: 120px;
+    height: 80px;
+    margin: 0 10px;
+  }
+
+  @keyframes scroll-infinite {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-140px * 6)); }
+  }
+
+  /* CORREÇÃO: Ajusta o WhatsApp float para mobile */
+  .whatsapp-float {
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .whatsapp-float img {
+    width: 30px;
+    height: 30px;
+  }
 }
 
 @media (max-width: 576px) {
@@ -1046,6 +1269,7 @@ footer .container {
   .tab-button {
     width: 100%;
     text-align: center;
+    font-size: 16px; /* CORREÇÃO: Reduz o tamanho da fonte */
   }
 
   .contact-btn {
@@ -1069,4 +1293,120 @@ footer .container {
     font-size: 14px;
     line-height: 1.6;
   }
+
+  /* CORREÇÃO: Ajustes adicionais para telas muito pequenas */
+  .container {
+    padding: 0 15px;
+  }
+
+  .header .container {
+    padding: 15px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .card {
+    padding: 30px 20px;
+  }
+
+  .card h3 {
+    font-size: 20px;
+  }
+
+  .card p {
+    font-size: 14px;
+  }
+
+  form {
+    padding: 30px 20px;
+  }
+
+  input, textarea {
+    padding: 14px;
+    font-size: 14px;
+  }
+
+  button[type="submit"] {
+    padding: 14px;
+    font-size: 14px;
+  }
+
+  /* CORREÇÃO: Carrossel ainda menor para telas muito pequenas */
+  .slider-infinite {
+    width: calc(120px * 12);
+  }
+
+  .slide-infinite {
+    min-width: 100px;
+    height: 70px;
+    margin: 0 10px;
+  }
+
+  @keyframes scroll-infinite {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-120px * 6)); }
+  }
 }
+
+/* CORREÇÃO: Media query adicional para telas muito pequenas */
+@media (max-width: 320px) {
+  .hero-title {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  .container {
+    padding: 0 10px;
+  }
+
+  .header .container {
+    padding: 10px;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  .info-box {
+    padding: 15px;
+  }
+
+  .tab-button {
+    font-size: 14px;
+    padding: 10px 0;
+  }
+
+  .tab-content {
+    font-size: 13px;
+  }
+
+  .card {
+    padding: 20px 15px;
+  }
+
+  .solucao-card {
+    padding: 20px 10px;
+  }
+
+  form {
+    padding: 20px 15px;
+  }
+
+  .whatsapp-float {
+    width: 45px;
+    height: 45px;
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .whatsapp-float img {
+    width: 25px;
+    height: 25px;
+  }
+}
+
