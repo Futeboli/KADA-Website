@@ -888,136 +888,253 @@ h2 {
   box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
 }
 
-/* Contato */
-.contato {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 100px 40px;
-  /* CORREÇÃO: Garante que a seção não exceda a viewport */
+/* Contact Section - OTIMIZADO PARA MOBILE */
+.contact-section {
+  padding: 120px 0;
+  background: rgba(255, 255, 255, 0.02);
   width: 100%;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
-form {
+.contact-grid {
   display: grid;
-  gap: 20px;
-  background: rgba(26, 26, 54, 0.6);
-  backdrop-filter: blur(20px);
-  padding: 40px;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  /* CORREÇÃO: Garante que o form não exceda a viewport */
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
   width: 100%;
   box-sizing: border-box;
 }
 
-input, textarea {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+.contact-info h2 {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--accent-color);
+  word-wrap: break-word;
+}
+
+.contact-info p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  opacity: 0.9;
+  word-wrap: break-word;
+}
+
+.contact-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contact-method {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
   border-radius: 12px;
-  padding: 16px;
+  transition: all 0.3s ease;
+}
+
+.contact-method:hover {
+  transform: translateX(5px);
+  border-color: var(--accent-color);
+}
+
+.contact-method i {
+  font-size: 20px;
+  color: var(--accent-color);
+  width: 24px;
+  text-align: center;
+}
+
+.contact-method h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
   color: #ffffff;
+}
+
+.contact-method p {
+  font-size: 14px;
+  opacity: 0.8;
+  margin: 0;
+}
+
+.contact-form {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 40px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  color: var(--text-color);
   font-size: 16px;
   transition: all 0.3s ease;
-  /* CORREÇÃO: Garante que os inputs não excedam a viewport */
-  width: 100%;
   box-sizing: border-box;
 }
 
-input:focus, textarea:focus {
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
   outline: none;
   border-color: var(--accent-color);
-  box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+  box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.1);
 }
 
-input::placeholder, textarea::placeholder {
-  color: rgba(255, 255, 255, 0.5);
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(224, 224, 224, 0.5);
 }
 
-textarea {
-  min-height: 120px;
-  resize: vertical;
-}
-
-button[type="submit"] {
-  background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
-  color: #ffffff;
+.btn-submit {
+  width: 100%;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  color: white;
   border: none;
-  padding: 16px;
-  border-radius: 12px;
+  padding: 16px 32px;
+  border-radius: 8px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  /* CORREÇÃO: Garante que o botão não exceda a viewport */
-  width: 100%;
-  box-sizing: border-box;
-}
-
-button[type="submit"]:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(138, 43, 226, 0.4);
-}
-
-.form-status {
-  margin-top: 20px;
-  text-align: center;
-}
-
-/* Footer */
-footer {
-  background: rgba(13, 13, 43, 0.9);
-  backdrop-filter: blur(20px);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 40px 0;
-  /* CORREÇÃO: Garante que o footer não exceda a viewport */
-  width: 100%;
-  box-sizing: border-box;
-}
-
-footer .container {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  text-align: center;
-  /* CORREÇÃO: Garante que o container não exceda a viewport */
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(138, 43, 226, 0.3);
+}
+
+/* Footer - OTIMIZADO PARA MOBILE */
+.footer {
+  background: var(--secondary-color);
+  padding: 80px 0 40px;
   width: 100%;
   box-sizing: border-box;
 }
 
 .footer-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 20px;
-  /* CORREÇÃO: Garante que o conteúdo não exceda a viewport */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  margin-bottom: 40px;
   width: 100%;
   box-sizing: border-box;
 }
 
-.footer-section {
+.footer-section h3,
+.footer-section h4 {
+  color: #ffffff;
   margin-bottom: 20px;
-  /* CORREÇÃO: Permite quebra de linha */
+  font-weight: 700;
   word-wrap: break-word;
 }
 
-.social-links {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-  /* CORREÇÃO: Permite quebra de linha se necessário */
-  flex-wrap: wrap;
+.footer-section h3 {
+  font-size: 24px;
 }
 
-.social-links a {
+.footer-section h4 {
+  font-size: 18px;
+}
+
+.footer-section p {
+  line-height: 1.6;
+  margin-bottom: 20px;
+  opacity: 0.8;
+  word-wrap: break-word;
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section ul li {
+  margin-bottom: 12px;
+}
+
+.footer-section ul li a {
   color: var(--text-color);
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
+.footer-section ul li a:hover {
+  color: var(--accent-color);
+}
+
+.social-links {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.social-links a {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
 .social-links a:hover {
+  background: var(--accent-color);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
   color: var(--accent-color);
 }
 
@@ -1150,8 +1267,14 @@ footer .container {
     padding: 80px 20px; /* CORREÇÃO: Reduz o padding */
   }
 
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
   .footer-content {
-    flex-direction: column;
+    grid-template-columns: 1fr;
+    gap: 30px;
     text-align: center;
   }
 
@@ -1238,6 +1361,44 @@ footer .container {
     100% { transform: translateX(calc(-140px * 6)); }
   }
 
+  /* MELHORIAS ESPECÍFICAS PARA FORMULÁRIO E FOOTER */
+  .contact-info h2 {
+    font-size: 32px;
+  }
+
+  .contact-info p {
+    font-size: 16px;
+  }
+
+  .contact-form {
+    padding: 32px 24px;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: center;
+  }
+
+  .footer-section {
+    margin-bottom: 20px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .footer-links {
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+
   /* CORREÇÃO: Ajusta o WhatsApp float para mobile */
   .whatsapp-float {
     bottom: 20px;
@@ -1319,18 +1480,57 @@ footer .container {
     font-size: 14px;
   }
 
-  form {
-    padding: 30px 20px;
+  /* MELHORIAS ESPECÍFICAS PARA FORMULÁRIO E FOOTER - MOBILE PEQUENO */
+  .contact-info h2 {
+    font-size: 28px;
   }
 
-  input, textarea {
-    padding: 14px;
+  .contact-info p {
     font-size: 14px;
   }
 
-  button[type="submit"] {
-    padding: 14px;
+  .contact-form {
+    padding: 24px 16px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 12px;
     font-size: 14px;
+  }
+
+  .btn-submit {
+    padding: 14px 24px;
+    font-size: 14px;
+  }
+
+  .footer {
+    padding: 60px 0 30px;
+  }
+
+  .footer-content {
+    gap: 25px;
+  }
+
+  .footer-section h3 {
+    font-size: 20px;
+  }
+
+  .footer-section h4 {
+    font-size: 16px;
+  }
+
+  .footer-section p {
+    font-size: 14px;
+  }
+
+  .footer-links {
+    gap: 15px;
+  }
+
+  .footer-links a {
+    font-size: 13px;
   }
 
   /* CORREÇÃO: Carrossel ainda menor para telas muito pequenas */
@@ -1381,32 +1581,58 @@ footer .container {
     padding: 10px 0;
   }
 
-  .tab-content {
+  /* MELHORIAS ESPECÍFICAS PARA FORMULÁRIO E FOOTER - MOBILE MUITO PEQUENO */
+  .contact-info h2 {
+    font-size: 24px;
+  }
+
+  .contact-form {
+    padding: 20px 12px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 10px;
     font-size: 13px;
   }
 
-  .card {
-    padding: 20px 15px;
+  .btn-submit {
+    padding: 12px 20px;
+    font-size: 13px;
   }
 
-  .solucao-card {
-    padding: 20px 10px;
+  .footer {
+    padding: 50px 0 25px;
   }
 
-  form {
-    padding: 20px 15px;
+  .footer-section h3 {
+    font-size: 18px;
+  }
+
+  .footer-section h4 {
+    font-size: 15px;
+  }
+
+  .footer-section p {
+    font-size: 13px;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+  }
+
+  .social-links a {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
   }
 
   .whatsapp-float {
-    width: 45px;
-    height: 45px;
-    bottom: 15px;
-    right: 15px;
-  }
-
-  .whatsapp-float img {
-    width: 25px;
-    height: 25px;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    bottom: 10px;
+    right: 10px;
   }
 }
-

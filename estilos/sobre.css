@@ -504,10 +504,9 @@ body::before {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 400px;
     position: relative;
-    /* CORREÇÃO: Previne que os orbit-items saiam da área */
-    overflow: hidden;
-    /* CORREÇÃO: Garante que a visual não exceda a viewport */
+    /* CORREÇÃO: Garante que o visual não exceda a viewport */
     width: 100%;
     box-sizing: border-box;
 }
@@ -516,10 +515,9 @@ body::before {
     position: relative;
     width: 300px;
     height: 300px;
-    /* CORREÇÃO: Garante que os elementos não saiam do container */
-    overflow: hidden;
-    /* CORREÇÃO: Cria uma área circular para conter os orbit-items */
-    border-radius: 50%;
+    /* CORREÇÃO: Garante que o gráfico não exceda a viewport */
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .center-circle {
@@ -534,78 +532,34 @@ body::before {
     display: flex;
     align-items: center;
     justify-content: center;
+    color: white;
     font-weight: 700;
     font-size: 1.2rem;
-    color: white;
+    text-align: center;
+    z-index: 2;
     box-shadow: 0 0 30px rgba(138, 43, 226, 0.5);
-    animation: pulse 2s ease-in-out infinite;
-    /* CORREÇÃO: Garante que o círculo central fique acima dos orbit-items */
-    z-index: 10;
 }
 
-@keyframes pulse {
-    0%, 100% {
-        transform: translate(-50%, -50%) scale(1);
-    }
-    50% {
-        transform: translate(-50%, -50%) scale(1.05);
-    }
-}
-
-/* CORREÇÃO PRINCIPAL: Orbit-items com animação corrigida */
 .orbit-item {
     position: absolute;
+    top: 50%;
+    left: 50%;
     background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 25px;
-    /* CORREÇÃO: Reduzido o padding para elementos menores */
+    border: 2px solid var(--accent-color);
+    border-radius: 20px;
     padding: 8px 12px;
-    /* CORREÇÃO: Reduzido o tamanho da fonte */
     font-size: 0.8rem;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--accent-color);
-    /* CORREÇÃO: Impede quebra de linha */
     white-space: nowrap;
-    /* CORREÇÃO: Z-index menor que o centro */
-    z-index: 5;
-    /* CORREÇÃO: Define o ponto de rotação */
-    transform-origin: center;
     animation: orbit 20s linear infinite;
-    /* CORREÇÃO: Sombra mais sutil */
-    box-shadow: 0 2px 10px rgba(138, 43, 226, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* CORREÇÃO: Posicionamento inicial correto dos orbit-items */
-.orbit-1 {
-    top: 50%;
-    left: 50%;
-    /* CORREÇÃO: Origem da transformação no centro do container */
-    transform-origin: 0 0;
-    animation-delay: 0s;
-}
+.orbit-item:nth-child(2) { animation-delay: -5s; }
+.orbit-item:nth-child(3) { animation-delay: -10s; }
+.orbit-item:nth-child(4) { animation-delay: -15s; }
 
-.orbit-2 {
-    top: 50%;
-    left: 50%;
-    transform-origin: 0 0;
-    animation-delay: 5s;
-}
-
-.orbit-3 {
-    top: 50%;
-    left: 50%;
-    transform-origin: 0 0;
-    animation-delay: 10s;
-}
-
-.orbit-4 {
-    top: 50%;
-    left: 50%;
-    transform-origin: 0 0;
-    animation-delay: 15s;
-}
-
-/* CORREÇÃO: Animação de órbita completamente refeita */
 @keyframes orbit {
     0% {
         transform: translate(-50%, -50%) rotate(0deg) translateX(100px) rotate(0deg);
@@ -626,9 +580,8 @@ body::before {
 
 .valores-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 30px;
-    margin-top: 60px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
     /* CORREÇÃO: Garante que o grid não exceda a viewport */
     width: 100%;
     box-sizing: border-box;
@@ -637,7 +590,7 @@ body::before {
 .valor-card {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
-    border-radius: 20px;
+    border-radius: 15px;
     padding: 40px 30px;
     text-align: center;
     transition: all 0.3s ease;
@@ -662,17 +615,18 @@ body::before {
 }
 
 .valor-card:hover::before {
-    opacity: 0.1;
+    opacity: 0.05;
 }
 
 .valor-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(138, 43, 226, 0.3);
+    box-shadow: 0 20px 40px rgba(138, 43, 226, 0.2);
     border-color: var(--accent-color);
 }
 
 .valor-icon {
     font-size: 3rem;
+    color: var(--accent-color);
     margin-bottom: 20px;
     display: block;
 }
@@ -686,7 +640,7 @@ body::before {
 }
 
 .valor-card p {
-    line-height: 1.7;
+    line-height: 1.6;
     opacity: 0.9;
     /* CORREÇÃO: Permite quebra de linha */
     word-wrap: break-word;
@@ -705,9 +659,16 @@ body::before {
 .equipe-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: start;
+    gap: 80px;
+    align-items: center;
     /* CORREÇÃO: Garante que o conteúdo não exceda a viewport */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.equipe-text {
+    min-width: 400px;
+    /* CORREÇÃO: Permite flexibilidade em telas menores */
     width: 100%;
     box-sizing: border-box;
 }
@@ -722,8 +683,8 @@ body::before {
 
 .equipe-text p {
     font-size: 1.1rem;
-    line-height: 1.8;
-    margin-bottom: 20px;
+    line-height: 1.7;
+    margin-bottom: 30px;
     opacity: 0.9;
     /* CORREÇÃO: Permite quebra de linha */
     word-wrap: break-word;
@@ -731,9 +692,8 @@ body::before {
 
 .team-stats {
     display: flex;
-    gap: 30px;
-    margin-top: 30px;
-    /* CORREÇÃO: Permite quebra de linha se necessário */
+    gap: 40px;
+    margin-bottom: 30px;
     flex-wrap: wrap;
 }
 
@@ -743,7 +703,7 @@ body::before {
 
 .team-stat .stat-number {
     display: block;
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 700;
     color: var(--accent-color);
     margin-bottom: 5px;
@@ -754,43 +714,69 @@ body::before {
     opacity: 0.8;
 }
 
+.equipe-skills {
+    min-width: 400px;
+    /* CORREÇÃO: Permite flexibilidade em telas menores */
+    width: 100%;
+    box-sizing: border-box;
+}
+
 .equipe-skills h4 {
     font-size: 1.5rem;
     color: var(--accent-color);
     margin-bottom: 30px;
+    text-align: center;
     /* CORREÇÃO: Permite quebra de linha */
     word-wrap: break-word;
 }
 
-.skills-list {
-    display: flex;
-    flex-direction: column;
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 20px;
 }
 
 .skill-item {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+    text-align: center;
+    padding: 20px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    /* CORREÇÃO: Garante que os skills não excedam a viewport */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.skill-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+}
+
+.skill-icon {
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-bottom: 10px;
 }
 
 .skill-name {
+    font-size: 0.9rem;
     font-weight: 500;
-    color: var(--text-color);
 }
 
 .skill-bar {
-    height: 8px;
-    background: var(--card-border);
-    border-radius: 4px;
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    margin-top: 10px;
     overflow: hidden;
 }
 
 .skill-progress {
     height: 100%;
     background: var(--gradient-1);
-    border-radius: 4px;
-    width: 0;
+    border-radius: 2px;
     transition: width 2s ease;
 }
 
@@ -805,9 +791,8 @@ body::before {
 
 .tech-categories {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 40px;
-    margin-top: 60px;
     /* CORREÇÃO: Garante que o grid não exceda a viewport */
     width: 100%;
     box-sizing: border-box;
@@ -816,10 +801,10 @@ body::before {
 .tech-category {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
-    border-radius: 20px;
-    padding: 30px;
+    border-radius: 15px;
+    padding: 40px 30px;
     text-align: center;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
     /* CORREÇÃO: Garante que as categorias não excedam a viewport */
     width: 100%;
     box-sizing: border-box;
@@ -827,66 +812,47 @@ body::before {
 
 .tech-category:hover {
     transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(138, 43, 226, 0.1);
 }
 
 .tech-category h3 {
     font-size: 1.5rem;
     color: var(--accent-color);
-    margin-bottom: 25px;
+    margin-bottom: 30px;
     /* CORREÇÃO: Permite quebra de linha */
     word-wrap: break-word;
 }
 
 .tech-icons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 20px;
 }
 
 .tech-icon {
     width: 60px;
     height: 60px;
-    background: var(--gradient-1);
-    border-radius: 12px;
+    background: rgba(138, 43, 226, 0.1);
+    border: 1px solid rgba(138, 43, 226, 0.3);
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: white;
-    cursor: pointer;
+    margin: 0 auto;
     transition: all 0.3s ease;
-    position: relative;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--accent-color);
+    text-align: center;
 }
 
 .tech-icon:hover {
-    transform: scale(1.1);
-    box-shadow: 0 10px 20px rgba(138, 43, 226, 0.4);
+    background: rgba(138, 43, 226, 0.2);
+    transform: translateY(-3px);
 }
 
-.tech-icon::after {
-    content: attr(data-tech);
-    position: absolute;
-    bottom: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 6px;
-    padding: 5px 10px;
-    font-size: 0.7rem;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-}
-
-.tech-icon:hover::after {
-    opacity: 1;
-}
-
-/* Call to Action */
+/* CTA Section */
 .cta-section {
     padding: 100px 0;
     background: var(--gradient-1);
@@ -907,6 +873,11 @@ body::before {
     bottom: 0;
     background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="%23ffffff" opacity="0.1"/></svg>');
     animation: float 10s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
 }
 
 .cta-content h2 {
@@ -939,10 +910,11 @@ body::before {
 .btn {
     display: inline-block;
     padding: 15px 30px;
-    border-radius: 50px;
-    text-decoration: none;
+    border-radius: 8px;
     font-weight: 600;
     font-size: 1rem;
+    text-decoration: none;
+    cursor: pointer;
     transition: all 0.3s ease;
     border: 2px solid transparent;
     /* CORREÇÃO: Previne quebra de linha */
@@ -952,6 +924,7 @@ body::before {
 .btn-primary {
     background: white;
     color: var(--primary-color);
+    border-color: white;
 }
 
 .btn-primary:hover {
@@ -959,7 +932,6 @@ body::before {
     color: white;
     border-color: white;
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
 }
 
 .btn-secondary {
@@ -972,38 +944,255 @@ body::before {
     background: white;
     color: var(--primary-color);
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
 }
 
-/* Footer */
-footer {
-    background: var(--secondary-color);
-    color: white;
-    text-align: center;
-    padding: 30px 20px;
-    font-size: 0.9rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    /* CORREÇÃO: Garante que o footer não exceda a viewport */
+/* Contact Section - OTIMIZADO PARA MOBILE */
+.contact-section {
+    padding: 120px 0;
+    background: rgba(255, 255, 255, 0.02);
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
     width: 100%;
     box-sizing: border-box;
 }
 
-footer .redes {
-    margin-top: 15px;
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    /* CORREÇÃO: Permite quebra de linha se necessário */
-    flex-wrap: wrap;
+.contact-info h2 {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--accent-color);
+    word-wrap: break-word;
 }
 
-footer .redes a {
+.contact-info p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    opacity: 0.9;
+    word-wrap: break-word;
+}
+
+.contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.contact-method {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.contact-method:hover {
+    transform: translateX(5px);
+    border-color: var(--accent-color);
+}
+
+.contact-method i {
+    font-size: 20px;
+    color: var(--accent-color);
+    width: 24px;
+    text-align: center;
+}
+
+.contact-method h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #ffffff;
+}
+
+.contact-method p {
+    font-size: 14px;
+    opacity: 0.8;
+    margin: 0;
+}
+
+.contact-form {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 40px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    color: var(--text-color);
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.1);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(224, 224, 224, 0.5);
+}
+
+.btn-submit {
+    width: 100%;
+    background: var(--gradient-1);
     color: white;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(138, 43, 226, 0.3);
+}
+
+/* Footer - OTIMIZADO PARA MOBILE */
+.footer {
+    background: var(--secondary-color);
+    padding: 80px 0 40px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.footer-section h3,
+.footer-section h4 {
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+.footer-section h3 {
+    font-size: 24px;
+}
+
+.footer-section h4 {
+    font-size: 18px;
+}
+
+.footer-section p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+    opacity: 0.8;
+    word-wrap: break-word;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 12px;
+}
+
+.footer-section ul li a {
+    color: var(--text-color);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-footer .redes a:hover {
+.footer-section ul li a:hover {
+    color: var(--accent-color);
+}
+
+.social-links {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background: var(--accent-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
     color: var(--accent-color);
 }
 
@@ -1256,6 +1445,11 @@ footer .redes a:hover {
     .tech-categories {
         grid-template-columns: 1fr;
     }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
 }
 
 /* Mobile (max-width: 768px) */
@@ -1480,6 +1674,44 @@ footer .redes a:hover {
         text-align: center;
     }
 
+    /* MELHORIAS ESPECÍFICAS PARA FORMULÁRIO E FOOTER */
+    .contact-info h2 {
+        font-size: 32px;
+    }
+
+    .contact-info p {
+        font-size: 16px;
+    }
+
+    .contact-form {
+        padding: 32px 24px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .footer-section {
+        margin-bottom: 20px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .footer-links {
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
     /* CORREÇÃO: Ajusta o WhatsApp float para mobile */
     .whatsapp-float {
         bottom: 20px;
@@ -1684,6 +1916,59 @@ footer .redes a:hover {
         font-size: 0.9rem;
     }
 
+    /* MELHORIAS ESPECÍFICAS PARA FORMULÁRIO E FOOTER - MOBILE PEQUENO */
+    .contact-info h2 {
+        font-size: 28px;
+    }
+
+    .contact-info p {
+        font-size: 14px;
+    }
+
+    .contact-form {
+        padding: 24px 16px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .btn-submit {
+        padding: 14px 24px;
+        font-size: 14px;
+    }
+
+    .footer {
+        padding: 60px 0 30px;
+    }
+
+    .footer-content {
+        gap: 25px;
+    }
+
+    .footer-section h3 {
+        font-size: 20px;
+    }
+
+    .footer-section h4 {
+        font-size: 16px;
+    }
+
+    .footer-section p {
+        font-size: 14px;
+    }
+
+    .footer-links {
+        gap: 15px;
+    }
+
+    .footer-links a {
+        font-size: 13px;
+    }
+
     /* CORREÇÃO: WhatsApp float ainda menor */
     .whatsapp-float {
         width: 45px;
@@ -1772,5 +2057,59 @@ footer .redes a:hover {
         padding: 10px 20px;
         font-size: 0.8rem;
     }
-}
 
+    /* MELHORIAS ESPECÍFICAS PARA FORMULÁRIO E FOOTER - MOBILE MUITO PEQUENO */
+    .contact-info h2 {
+        font-size: 24px;
+    }
+
+    .contact-form {
+        padding: 20px 12px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .btn-submit {
+        padding: 12px 20px;
+        font-size: 13px;
+    }
+
+    .footer {
+        padding: 50px 0 25px;
+    }
+
+    .footer-section h3 {
+        font-size: 18px;
+    }
+
+    .footer-section h4 {
+        font-size: 15px;
+    }
+
+    .footer-section p {
+        font-size: 13px;
+    }
+
+    .footer-links a {
+        font-size: 12px;
+    }
+
+    .social-links a {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+
+    .whatsapp-float {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        bottom: 10px;
+        right: 10px;
+    }
+}

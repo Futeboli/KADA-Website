@@ -24,7 +24,7 @@
             <!-- Navegação -->
             <nav class="nav">
                 <a href="./Paginas/Sobre.html" class="nav-link">Sobre</a>
-                <a href="#servicos" class="nav-link">Serviços</a>
+                <a href="./Paginas/servicos.html" class="nav-link">Serviços</a>
                 <a href="#depoimentos" class="nav-link">Depoimentos</a>
                 <a href="#contato" class="nav-link">Contato</a>
             </nav>
@@ -251,40 +251,129 @@
   </div>
 </section>
 <!--Depoimentos Fim-->
-<section id="contato" class="contato">
-    <h2>Entre em contato</h2>
-    <form id="Formulario-home">
-        <input type="text" id="contact-name" placeholder="Nome" required>
-        <input type="email" id="contact-email" placeholder="E-mail" required>
-        <textarea id="contact-message" placeholder="Mensagem" required></textarea>
-        <button type="submit" id="contact-submit">Enviar</button>
-        <div id="form-status" class="form-status"></div>
-    </form>
+<!-- Contato -->
+<section id="contato" class="contact-section">
+  <div class="container">
+      <div class="contact-grid">
+          <div class="contact-info">
+              <h2>Entre em Contato</h2>
+              <p>Estamos prontos para discutir seu projeto e encontrar a melhor solução para suas necessidades.</p>
+              
+              <div class="contact-methods">
+                  <div class="contact-method">
+                      <i class="fas fa-envelope"></i>
+                      <div>
+                          <h4>Email</h4>
+                          <p>kadaempresa@gmail.com</p>
+                      </div>
+                  </div>
+                  <div class="contact-method">
+                      <i class="fas fa-phone"></i>
+                      <div>
+                          <h4>Telefone</h4>
+                          <p>+55 (41) 99214-3478</p>
+                      </div>
+                  </div>
+                  <div class="contact-method">
+                      <i class="fas fa-map-marker-alt"></i>
+                      <div>
+                          <h4>Localização</h4>
+                          <p>Curitiba, Paraná, Brasil</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          
+          <div class="contact-form">
+              <form id="contact-form">
+                  <div class="form-group">
+                      <input type="text" id="name" name="name" placeholder="Seu nome" required>
+                  </div>
+                  <div class="form-group">
+                      <input type="email" id="email" name="email" placeholder="Seu email" required>
+                  </div>
+                  <div class="form-group">
+                      <input type="tel" id="phone" name="phone" placeholder="Seu telefone">
+                  </div>
+                  <div class="form-group">
+                      <select id="service" name="service" required>
+                          <option value="">Selecione um serviço</option>
+                          <option value="desenvolvimento-web">Desenvolvimento Web</option>
+                          <option value="aplicativo-mobile">Aplicativo Mobile</option>
+                          <option value="inteligencia-artificial">Inteligência Artificial</option>
+                          <option value="solucoes-cloud">Soluções Cloud</option>
+                          <option value="ciberseguranca">Cibersegurança</option>
+                          <option value="consultoria-digital">Consultoria Digital</option>
+                      </select>
+                  </div>
+                  <div class="form-group">
+                      <textarea id="message" name="message" placeholder="Descreva seu projeto" rows="5" required></textarea>
+                  </div>
+                  <button type="submit" class="btn-submit">
+                      <span>Enviar Mensagem</span>
+                      <i class="fas fa-paper-plane"></i>
+                  </button>
+              </form>
+          </div>
+      </div>
+  </div>
 </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>K.A.D.A. Systems</h3>
-                    <p>Transformando ideias em soluções digitais seguras e escaláveis.</p>
-                    <div class="social-links">
-                        <a href="#" aria-label="LinkedIn">LinkedIn</a>
-                        <a href="#" aria-label="Instagram">Instagram</a>
-                        <a href="#" aria-label="GitHub">GitHub</a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h4>Contato</h4>
-                    <p>📧 contato@kadasystems.com</p>
-                    <p>📱 +55 (41) 99214-3478</p>
-                    <p>📍 Curitibs, Paraná, Brasil</p>
-                    <p>&copy; 2025 K.A.D.A. Systems - Todos os direitos reservados</p>
-                </div>
-            </div>
-        </div>
-    </footer>
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+      <div class="footer-content">
+          <div class="footer-section">
+              <h3>K.A.D.A. Systems</h3>
+              <p>Transformando ideias em soluções digitais seguras e escaláveis desde 2020.</p>
+              <div class="social-links">
+                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                  <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                  <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                  <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+              </div>
+          </div>
+          <div class="footer-section">
+              <h4>Serviços</h4>
+              <ul>
+                  <li><a href="./Paginas/servicos.html">Desenvolvimento Web</a></li>
+                  <li><a href="./Paginas/servicos.html">Aplicativos Mobile</a></li>
+                  <li><a href="./Paginas/servicos.html">Inteligência Artificial</a></li>
+                  <li><a href="./Paginas/servicos.html">Soluções Cloud</a></li>
+                  <li><a href="./Paginas/servicos.html">Cibersegurança</a></li>
+                  <li><a href="./Paginas/servicos.html">Consultoria Digital</a></li>
+              </ul>
+          </div>./Paginas/servicos.html
+          <div class="footer-section">
+              <h4>Empresa</h4>
+              <ul>
+                  <li><a href="#">Sobre Nós</a></li>
+                  <li><a href="#">Nossa Equipe</a></li>
+                  <li><a href="#">Carreiras</a></li>
+                  <li><a href="#">Blog</a></li>
+                  <li><a href="#">Casos de Sucesso</a></li>
+              </ul>
+          </div>
+          <div class="footer-section">
+              <h4>Contato</h4>
+              <div class="contact-info">
+                  <p><i class="fas fa-envelope"></i> kadaempresa@gmail.com</p>
+                  <p><i class="fas fa-phone"></i> +55 (41) 99214-3478</p>
+                  <p><i class="fas fa-map-marker-alt"></i> Curitiba, PR, Brasil</p>
+              </div>
+          </div>
+      </div>
+      <div class="footer-bottom">
+          <p>&copy; 2025 K.A.D.A. Systems - Todos os direitos reservados</p>
+          <div class="footer-links">
+              <a href="#">Política de Privacidade</a>
+              <a href="#">Termos de Uso</a>
+              <a href="#">LGPD</a>
+          </div>
+      </div>
+  </div>
+</footer>
+
   <a href="https://wa.me/5541992143478?text=Olá estou entrando em contato para Desenvolver um site para a minha Empresa." class="whatsapp-float" target="_blank">
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/2044px-WhatsApp.svg.png" alt="WhatsApp">
   </a>
