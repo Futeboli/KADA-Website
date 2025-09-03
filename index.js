@@ -494,3 +494,27 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+// Envio do formulário de contato para o backend (nova funcionalidade)
+document.getElementById("form-contato").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const nome = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const mensagem = document.getElementById("message").value;
+
+  try {
+    const resposta = await fetch("http://localhost:3000/api/pedidos", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ nome, email, mensagem }),
+    });
+
+    const resultado = await resposta.json();
+    document.getElementById("resposta").innerText = resultado.message;
+  } catch (err) {
+    document.getElementById("resposta").innerText = "Erro ao enviar pedido!";
+  }
+});

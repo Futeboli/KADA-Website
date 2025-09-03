@@ -6,14 +6,14 @@ import cors from 'cors';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 
-import { healthCheck, connect, disconnect } from './config/database.js';
+import { connect } from './config/database.js';
 import pedidosRouter from './routes/pedidos.js';
 import { errorHandler, notFound } from './middleware/errorHandler.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Configuração de CORS mais segura
+// Configuração de CORS (permitindo o front acessar o back)
 const corsOptions = {
   origin: process.env.NODE_ENV === 'production' 
     ? process.env.ALLOWED_ORIGINS?.split(',') || ['http://localhost:3000'] 
@@ -28,7 +28,7 @@ app.use(helmet());
 app.use(json());
 app.use(urlencoded({ extended: true }));
 
-// Rate limiting
+// Rate limiting (anti-flood)
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutos
   max: 100, // máximo 100 requests por IP
@@ -38,22 +38,22 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
-// Rotas
-app.get('/health', healthCheck);
+// 🚀 Rota principal para pedidos
 app.use('/api/pedidos', pedidosRouter);
 
-// Middlewares
+// Middleware para erros
 app.use(notFound);
 app.use(errorHandler);
 
-// Start server
-app.listen(PORT, async () => {
-  await connect();
-  console.log(`🚀 Servidor rodando na porta ${PORT}`);
-});
-
-// Encerrar conexões ao fechar
-process.on('SIGINT', async () => {
-  await disconnect();
-  process.exit(0);
-});
+// Iniciar servidor e banco
+connect()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error('❌ Erro ao conectar no banco:', err);
+    process.exit(1);
+  });
+  
