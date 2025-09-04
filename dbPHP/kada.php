@@ -2,7 +2,7 @@
 if (isset($_POST['submit'])) {
     //manda os dados do formulário para o banco de dados
 
-    include_once 'conection.php';
+    include_once 'connection.php';
 
     $nome = $_POST['name'];
     $telefone = $_POST['phone'];
