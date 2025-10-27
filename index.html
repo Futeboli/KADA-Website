@@ -1,284 +1,429 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bible Perseverance Quest</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            text-align: center;
-            margin: 0;
-            padding: 20px;
-        }
-        h1 {
-            color: #2c3e50;
-        }
-        .menu {
-            margin: 20px 0;
-        }
-        button {
-            background-color: #3498db;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            margin: 10px;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 5px;
-        }
-        button:hover {
-            background-color: #2980b9;
-        }
-        .game {
-            display: none;
-            margin-top: 20px;
-        }
-        .quiz .question {
-            margin: 20px 0;
-        }
-        .options {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .option {
-            margin: 5px;
-            padding: 10px;
-            background-color: #ecf0f1;
-            border: 1px solid #bdc3c7;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .option:hover {
-            background-color: #d5dbdb;
-        }
-        .memory-board {
-            display: grid;
-            grid-template-columns: repeat(4, 100px);
-            grid-gap: 10px;
-            justify-content: center;
-            margin: 20px auto;
-        }
-        .card {
-            width: 100px;
-            height: 100px;
-            background-color: #3498db;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 12px;
-            text-align: center;
-        }
-        .card.flipped {
-            background-color: #ecf0f1;
-        }
-        .timer {
-            font-size: 24px;
-            color: red;
-        }
-        .score {
-            margin-top: 20px;
-        }
-        .back-btn {
-            margin-top: 20px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agência K.A.D.A.</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    <h1>Bible Perseverance Quest</h1>
-    <p>Welcome to a game that tests your knowledge of biblical perseverance—enduring through trials, faith in adversity, and steadfastness in God's promises.</p>
-    
-    <div id="menu" class="menu">
-        <button onclick="showGame('quiz')">Perseverance Quiz (10 Questions)</button>
-        <button onclick="showGame('memory')">Verse Memory Challenge</button>
-        <button onclick="showGame('truefalse')">True or False Blitz (5 Seconds)</button>
+  <!-- Padrão de fundo ondulado -->
+  <div class="background-pattern"></div>
+  <div class="background-pattern"></div>
+  <div class="background-pattern"></div>
+  <div class="background-pattern"></div>
+
+  <!-- Header da Ubistart adaptado -->
+  <header class="header">
+    <div class="container">
+      <!-- Logo K.A.D.A. Systems -->
+      <div class="logo">K.A.D.A. Systems</div>
+
+      <!-- Navegação -->
+      <nav class="nav">
+        <a href="./Paginas/Sobre.html" class="nav-link">Sobre</a>
+        <a href="./Paginas/servicos.html" class="nav-link">Serviços</a>
+        <a href="#depoimentos" class="nav-link">Depoimentos</a>
+        <a href="#contato" class="nav-link">Contato</a>
+      </nav>
+
+      <!-- Botão do menu hambúrguer para mobile -->
+      <button class="hamburger-menu" aria-label="Abrir menu">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- Lado direito do header - Adaptado -->
+      <div class="header-right">
+        <!-- Botão de contato -->
+        <button class="contact-btn">Contato</button>
+      </div>
     </div>
-    
-    <div id="quiz" class="game">
-        <h2>Perseverance Quiz</h2>
-        <div id="quiz-content"></div>
-        <div class="score">Score: <span id="quiz-score">0</span>/10</div>
-        <button class="back-btn" onclick="backToMenu()">Back to Menu</button>
+  </header>
+
+  <!-- Navegação Mobile -->
+  <nav class="mobile-nav">
+    <a href="./Paginas/Sobre.html" class="mobile-nav-link">Sobre</a>
+    <a href="#servicos" class="mobile-nav-link">Serviços</a>
+    <a href="#depoimentos" class="mobile-nav-link">Depoimentos</a>
+    <a href="#contato" class="mobile-nav-link">Contato</a>
+    <button class="mobile-contact-btn">Contato</button>
+  </nav>
+
+  <!-- Conteúdo principal da Ubistart adaptado -->
+  <main class="main">
+    <div class="container">
+      <div class="content-grid">
+        <!-- Lado esquerdo - Título principal -->
+        <div class="hero-content">
+          <h1 class="hero-title">
+            Desenvolvimento<br>
+            De Sites <br>
+            Sob Medida<br>
+            <span class="highlight">Feitos para Você.</span>
+          </h1>
+
+          <button class="cta-button">
+            Fale com um expert
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4.16667 10H15.8333M15.8333 10L10.8333 5M15.8333 10L10.8333 15" stroke="currentColor"
+                stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Lado direito - Card de informações com novo tab menu -->
+        <div class="info-section">
+          <div class="info-box">
+            <div class="tab-menu">
+              <button class="tab-button active" data-tab="desenvolver">Quero desenvolver</button>
+              <button class="tab-button" data-tab="tenho-software">Já tenho software</button>
+            </div>
+
+            <div id="desenvolver" class="tab-content active">
+              <p>A K.A.D.A ajuda empresas a conquistar seu mercado entregando análise, construção e implementação de
+                software, com agilidade, inovação e personalização.</p>
+            </div>
+
+            <div id="tenho-software" class="tab-content">
+              <p>A K.A.D.A oferece suporte técnico, melhorias contínuas e integração com novas tecnologias para tornar
+                sua solução mais eficiente e moderna.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    
-    <div id="memory" class="game">
-        <h2>Verse Memory Challenge</h2>
-        <div class="memory-board" id="memory-board"></div>
-        <div class="score">Matches: <span id="memory-score">0</span>/4</div>
-        <button class="back-btn" onclick="backToMenu()">Back to Menu</button>
+  </main>
+
+  <section class="carrossel-infinite">
+    <div class="slider-infinite">
+
+      <div class="slide-infinite">
+        <img src="./img/imagem-1.jpeg" alt="">
+      </div>
+      <div class="slide-infinite">
+        <img src="./img/imagem-2.jpeg" alt="">
+      </div>
+      <div class="slide-infinite">
+        <img src="./img/imagem-3.jpeg" alt="">
+      </div>
+      <div class="slide-infinite">
+        <img src="./img/imagem-4.jpeg" alt="">
+      </div>
+      <div class="slide-infinite">
+        <img src="./img/imagem-5.jpeg" alt="">
+      </div>
+      <div class="slide-infinite">
+        <img src="./img/imagem-6.jpeg" alt="">
+      </div>
+
+      <!--Img duplicadas-->
+
+      <div class="slide-infinite">
+        <img src="./img/imagem-1.jpeg" alt="">
+      </div>
+      <div class="slide-infinite">
+        <img src="./img/imagem-2.jpeg" alt="">
+      </div>
+      <div class="slide-infinite">
+        <img src="./img/imagem-3.jpeg" alt="">
+      </div>
+      <div class="slide-infinite">
+        <img src="./img/imagem-4.jpeg" alt="">
+      </div>
+      <div class="slide-infinite">
+        <img src="./img/imagem-5.jpeg" alt="">
+      </div>
+      <div class="slide-infinite">
+        <img src="./img/imagem-6.jpeg" alt="">
+      </div>
+
     </div>
-    
-    <div id="truefalse" class="game">
-        <h2>True or False Blitz</h2>
-        <div id="tf-content"></div>
-        <div class="timer">Time: <span id="timer">5</span></div>
-        <div class="score">Score: <span id="tf-score">0</span>/10</div>
-        <button class="back-btn" onclick="backToMenu()">Back to Menu</button>
+
+  </section>
+
+  <section id="servicos" class="servicos">
+    <h2>Nossos Serviços</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Consultoria Estratégica</h3>
+        <p>Análise de necessidades e planejamento digital.</p>
+      </div>
+      <div class="card">
+        <h3>Software Personalizado</h3>
+        <p>Web e mobile com alto desempenho e usabilidade.</p>
+      </div>
+      <div class="card">
+        <h3>Integrações e APIs</h3>
+        <p>Conectamos sistemas com segurança e flexibilidade.</p>
+      </div>
     </div>
+  </section>
 
-    <script>
-        let currentGame = '';
-        let quizQuestions = [
-            { question: "In the story of Job, what did Job lose that tested his perseverance?", options: ["His wealth and family", "His eyesight", "His friends", "His home"], answer: 0 },
-            { question: "Which apostle wrote about perseverance in Hebrews 12:1-2?", options: ["Paul", "Peter", "John", "James"], answer: 0 },
-            { question: "What did Jesus teach in the Parable of the Persistent Widow?", options: ["Give up after three tries", "Pray without ceasing", "Seek revenge", "Ignore injustice"], answer: 1 },
-            { question: "Who persevered through 40 years in the wilderness?", options: ["Moses", "Joshua", "The Israelites", "David"], answer: 2 },
-            { question: "In Romans 5:3-5, perseverance produces what?", options: ["Wealth", "Character and hope", "Fear", "Anger"], answer: 1 },
-            { question: "What did Noah build while persevering?", options: ["A temple", "An ark", "A tower", "A city"], answer: 1 },
-            { question: "Which prophet persevered in preaching to Nineveh?", options: ["Isaiah", "Jeremiah", "Jonah", "Ezekiel"], answer: 2 },
-            { question: "In James 1:12, what is promised to those who persevere?", options: ["Riches", "The crown of life", "Eternal sleep", "Fame"], answer: 1 },
-            { question: "Who persevered through betrayal and crucifixion?", options: ["Peter", "Judas", "Jesus", "Pilate"], answer: 2 },
-            { question: "What does 2 Timothy 4:7 say Paul did?", options: ["Gave up", "Finished the race", "Started late", "Cheated"], answer: 1 }
-        ];
-        let quizIndex = 0;
-        let quizScore = 0;
+  <!-- Seção de Principais Soluções -->
+  <section class="principais-solucoes">
+    <h2>Principais <span>Soluções</span></h2>
+    <div class="solucoes-grid">
 
-        let memoryCards = [
-            "Let us not become weary in doing good...", "Galatians 6:9",
-            "Blessed is the one who perseveres...", "James 1:12",
-            "Run with perseverance the race...", "Hebrews 12:1",
-            "I can do all things through Christ...", "Philippians 4:13"
-        ];
-        let memoryFlipped = [];
-        let memoryMatched = [];
-        let memoryScore = 0;
+      <div class="solucao-card">
+        <i class="fas fa-desktop"></i>
+        <h3>Infraestrutura de TI</h3>
+        <p>Arquitetura, redimensionamento, atualização e sustentação de tecnologia para otimização operacional.</p>
+      </div>
 
-        let tfQuestions = [
-            { question: "Job persevered by cursing God during his trials.", answer: false },
-            { question: "Paul encouraged perseverance in 2 Thessalonians 3:13.", answer: true },
-            { question: "The Israelites persevered in the wilderness without complaining.", answer: false },
-            { question: "Jesus persevered through the Garden of Gethsemane.", answer: true },
-            { question: "Perseverance is not mentioned in the Beatitudes.", answer: false },
-            { question: "Noah's perseverance led to the flood's end.", answer: true },
-            { question: "David persevered against Goliath with faith.", answer: true },
-            { question: "Hebrews 10:23 urges us to hold unswervingly to hope.", answer: true },
-            { question: "Elijah gave up after defeating the prophets of Baal.", answer: false },
-            { question: "Revelation promises perseverance for the saints.", answer: true }
-        ];
-        let tfIndex = 0;
-        let tfScore = 0;
-        let timerInterval;
+      <div class="solucao-card">
+        <i class="fas fa-shield-alt"></i>
+        <h3>Cibersegurança</h3>
+        <p>As melhores e mais completas soluções de segurança do mercado disponíveis em uma arquitetura e inteligência
+          compatível com seu ambiente.</p>
+      </div>
 
-        function showGame(game) {
-            document.getElementById('menu').style.display = 'none';
-            document.getElementById(game).style.display = 'block';
-            currentGame = game;
-            if (game === 'quiz') startQuiz();
-            if (game === 'memory') startMemory();
-            if (game === 'truefalse') startTrueFalse();
-        }
+      <div class="solucao-card">
+        <i class="fas fa-network-wired"></i>
+        <h3>Conectividade</h3>
+        <p>Obtenha soluções que maximizem o desempenho de sua rede, oferecendo maior performance, disponibilidade e
+          segurança para a sua operação.</p>
+      </div>
 
-        function backToMenu() {
-            document.getElementById(currentGame).style.display = 'none';
-            document.getElementById('menu').style.display = 'block';
-            resetGames();
-        }
+      <div class="solucao-card">
+        <i class="fas fa-cogs"></i>
+        <h3>Transformação Digital</h3>
+        <p>Incorporamos as tecnologias mais avançadas na criação de projetos que otimizam recursos e elevam a eficiência
+          do seu negócio melhorando a experiência de seus clientes.</p>
+      </div>
 
-        function resetGames() {
-            quizIndex = 0; quizScore = 0; document.getElementById('quiz-score').textContent = 0;
-            memoryFlipped = []; memoryMatched = []; memoryScore = 0; document.getElementById('memory-score').textContent = 0;
-            tfIndex = 0; tfScore = 0; document.getElementById('tf-score').textContent = 0;
-            clearInterval(timerInterval);
-        }
+      <div class="solucao-card">
+        <i class="fas fa-cloud"></i>
+        <h3>Cloud</h3>
+        <p>Projetos de migração, dimensionamento, arquitetura e adequação para levar aplicações e negócios para a nuvem.
+        </p>
+      </div>
 
-        function startQuiz() {
-            if (quizIndex < quizQuestions.length) {
-                let q = quizQuestions[quizIndex];
-                document.getElementById('quiz-content').innerHTML = `
-                    <div class="question">${q.question}</div>
-                    <div class="options">
-                        ${q.options.map((opt, i) => `<div class="option" onclick="answerQuiz(${i})">${opt}</div>`).join('')}
-                    </div>
-                `;
-            } else {
-                document.getElementById('quiz-content').innerHTML = `<p>Quiz Complete! Your score: ${quizScore}/10</p>`;
-            }
-        }
+      <div class="solucao-card">
+        <i class="fas fa-handshake"></i>
+        <h3>Desenvolvimento em Cooperação</h3>
+        <p>Conheça esta modalidade que pode materializar sua ideia em uma aplicação digital adequada para o seu negócio.
+        </p>
+      </div>
 
-        function answerQuiz(choice) {
-            if (choice === quizQuestions[quizIndex].answer) quizScore++;
-            document.getElementById('quiz-score').textContent = quizScore;
-            quizIndex++;
-            startQuiz();
-        }
+      <div class="solucao-card">
+        <i class="fas fa-code"></i>
+        <h3>Projeto SAP</h3>
+        <p>Conversões, rollouts e upgrades eficientes com a agilidade e confiabilidade que seu negócio precisa.</p>
+      </div>
 
-        function startMemory() {
-            let board = document.getElementById('memory-board');
-            board.innerHTML = '';
-            let shuffled = [...memoryCards].sort(() => Math.random() - 0.5);
-            shuffled.forEach((card, i) => {
-                let div = document.createElement('div');
-                div.className = 'card';
-                div.dataset.index = i;
-                div.onclick = () => flipCard(div, card);
-                board.appendChild(div);
-            });
-        }
+      <div class="solucao-card">
+        <i class="fas fa-users"></i>
+        <h3>Squads Especializados de TI</h3>
+        <p>O nosso talento é identificar e selecionar os melhores profissionais de TI do mercado para compor squads sob
+          medida para seus projetos.</p>
+      </div>
 
-        function flipCard(div, content) {
-            if (memoryFlipped.length < 2 && !div.classList.contains('flipped')) {
-                div.classList.add('flipped');
-                div.textContent = content;
-                memoryFlipped.push({ div, content });
-                if (memoryFlipped.length === 2) {
-                    setTimeout(checkMatch, 1000);
-                }
-            }
-        }
+    </div>
+  </section>
 
-        function checkMatch() {
-            let [a, b] = memoryFlipped;
-            if (memoryCards.indexOf(a.content) % 2 === memoryCards.indexOf(b.content) % 2 && a.content !== b.content) {
-                memoryMatched.push(a.div, b.div);
-                memoryScore++;
-                document.getElementById('memory-score').textContent = memoryScore;
-                if (memoryScore === 4) alert('You won!');
-            } else {
-                a.div.classList.remove('flipped');
-                b.div.classList.remove('flipped');
-                a.div.textContent = '';
-                b.div.textContent = '';
-            }
-            memoryFlipped = [];
-        }
+  <!--Depoimentos-->
+  <section id="depoimentos" class="depoimentos">
+    <h2>O que dizem nossos clientes</h2>
+    <div class="carrossel">
+      <div class="item-card ativo">
+        <div class="card-depoimento">
+          <p>"A equipe da K.A.D.A. Systems entregou um sistema impecável! Estamos mais eficientes do que nunca."</p>
+          <span>— João Mendes, TechNova</span>
+        </div>
+      </div>
+      <div class="item-card">
+        <div class="card-depoimento">
+          <p>"Desde o primeiro contato com a K.A.D.A., senti confiança e profissionalismo. Recomendo demais!"</p>
+          <span>— Camila Rocha, AutoByte</span>
+        </div>
+      </div>
+      <div class="item-card">
+        <div class="card-depoimento">
+          <p>"A inteligência artificial aplicada trouxe resultados surpreendentes em nossa análise de dados feita pela
+            K.A.D.A. Systems."</p>
+          <span>— Rafael Lima, Neurovia</span>
+        </div>
+      </div>
+      <div class="item-card">
+        <div class="card-depoimento">
+          <p>"Excelente trabalho! A equipe da K.A.D.A. é muito competente e o resultado final ficou incrível.
+            Definitivamente voltaremos a trabalhar juntos em futuros projetos."</p>
+          <span>— Dean Sanches, PNHUB</span>
+        </div>
+      </div>
+    </div>
+    <div class="dots-container">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </section>
+  <!--Depoimentos Fim-->
+  <!-- Contato -->
+  <section id="contato" class="contact-section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h2>Entre em Contato</h2>
+          <p>Estamos prontos para discutir seu projeto e encontrar a melhor solução para suas necessidades.</p>
 
-        function startTrueFalse() {
-            if (tfIndex < tfQuestions.length) {
-                let q = tfQuestions[tfIndex];
-                document.getElementById('tf-content').innerHTML = `
-                    <div class="question">${q.question}</div>
-                    <button onclick="answerTF(true)">True</button>
-                    <button onclick="answerTF(false)">False</button>
-                `;
-                let time = 5;
-                document.getElementById('timer').textContent = time;
-                timerInterval = setInterval(() => {
-                    time--;
-                    document.getElementById('timer').textContent = time;
-                    if (time <= 0) {
-                        clearInterval(timerInterval);
-                        tfIndex++;
-                        startTrueFalse();
-                    }
-                }, 1000);
-            } else {
-                clearInterval(timerInterval);
-                document.getElementById('tf-content').innerHTML = `<p>Blitz Complete! Your score: ${tfScore}/10</p>`;
-            }
-        }
+          <div class="contact-methods">
+            <div class="contact-method">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <h4>Email</h4>
+                <p>kadaempresads@gmail.com</p>
+              </div>
+            </div>
+            <div class="contact-method">
+              <i class="fas fa-phone"></i>
+              <div>
+                <h4>Telefone</h4>
+                <p>+55 (41) 99214-3478</p>
+              </div>
+            </div>
+            <div class="contact-method">
+              <i class="fas fa-map-marker-alt"></i>
+              <div>
+                <h4>Localização</h4>
+                <p>Curitiba, Paraná, Brasil</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
-        function answerTF(choice) {
-            clearInterval(timerInterval);
-            if (choice === tfQuestions[tfIndex].answer) tfScore++;
-            document.getElementById('tf-score').textContent = tfScore;
-            tfIndex++;
-            startTrueFalse();
-        }
-    </script>
+        <!-- Formulário -->
+
+        <div class="contact-form">
+          <form onsubmit="enviarFormulario(event)">
+            <div class="form-group">
+              <input type="text" id="name" name="name" placeholder="Seu nome" required>
+            </div>
+            <div class="form-group">
+              <input type="email" id="email" name="email" placeholder="Seu email" required>
+            </div>
+            <div class="form-group">
+              <input type="tel" id="phone" name="phone" placeholder="Seu telefone">
+            </div>
+
+            <div class="form-group">
+              <select id="service" name="service" required>
+                <option value="">Selecione um serviço</option>
+                <option value="desenvolvimento-web">Desenvolvimento Web</option>
+                <option value="aplicativo-mobile">Aplicativo Mobile</option>
+                <option value="inteligencia-artificial">Inteligência Artificial</option>
+                <option value="solucoes-cloud">Soluções Cloud</option>
+                <option value="ciberseguranca">Cibersegurança</option>
+                <option value="consultoria-digital">Consultoria Digital</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <textarea id="message" name="message" placeholder="Descreva seu projeto" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn-submit" name="submit">
+              <span>Enviar Mensagem</span>
+              <i class="fas fa-paper-plane"></i>
+            </button>
+            <p id="resposta"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>K.A.D.A. Systems</h3>
+          <p>Transformando ideias em soluções digitais seguras e escaláveis desde 2020.</p>
+          <div class="social-links">
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h4>Serviços</h4>
+          <ul>
+            <li><a href="./Paginas/servicos.html">Desenvolvimento Web</a></li>
+            <li><a href="./Paginas/servicos.html">Aplicativos Mobile</a></li>
+            <li><a href="./Paginas/servicos.html">Inteligência Artificial</a></li>
+            <li><a href="./Paginas/servicos.html">Soluções Cloud</a></li>
+            <li><a href="./Paginas/servicos.html">Cibersegurança</a></li>
+            <li><a href="./Paginas/servicos.html">Consultoria Digital</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Empresa</h4>
+          <ul>
+            <li><a href="#">Sobre Nós</a></li>
+            <li><a href="#">Nossa Equipe</a></li>
+            <li><a href="#">Carreiras</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Casos de Sucesso</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contato</h4>
+          <div class="contact-info">
+            <p><i class="fas fa-envelope"></i> kadaempresa@gmail.com</p>
+            <p><i class="fas fa-phone"></i> +55 (41) 99214-3478</p>
+            <p><i class="fas fa-map-marker-alt"></i> Curitiba, PR, Brasil</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 K.A.D.A. Systems - Todos os direitos reservados</p>
+        <div class="footer-links">
+          <a href="#">Política de Privacidade</a>
+          <a href="#">Termos de Uso</a>
+          <a href="#">LGPD</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/5541992143478?text=Olá estou entrando em contato para Desenvolver um site para a minha Empresa."
+    class="whatsapp-float" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/2044px-WhatsApp.svg.png"
+      alt="WhatsApp">
+  </a>
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script defer src="emailjs-config.js"></script>
+  <script defer src="index.js"></script>
+  <!--<script src="db.js"></script>
+  <script src="server.js"></script>
+  <script src="user.js"></script>-->
 </body>
+
+<script>
+async function enviarFormulario(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const message = document.getElementById("message").value;
+
+  const response = await fetch("send-email.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ name, email, message })
+  });
+
+  const result = await response.json();
+  alert(result.message);
+}
+</script>
+
 </html>
