@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agência K.A.D.A.</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Padrão de fundo ondulado -->
+  <div class="background-pattern"></div>
+  <div class="background-pattern"></div>
+  <div class="background-pattern"></div>
+  <div class="background-pattern"></div>
+
+  <!-- Header da Ubistart adaptado -->
+  <header class="header">
+    <div class="container">
+      <!-- Logo K.A.D.A. Systems -->
+      <div class="logo">K.A.D.A. Systems</div>
+
+      <!-- Navegação -->
+      <nav class="nav">
+        <a href="./Paginas/Sobre.html" class="nav-link">Sobre</a>
+        <a href="./Paginas/servicos.html" class="nav-link">Serviços</a>
+        <a href="#depoimentos" class="nav-link">Depoimentos</a>
+        <a href="#contato" class="nav-link">Contato</a>
+      </nav>
+
+      <!-- Botão do menu hambúrguer para mobile -->
+      <button class="hamburger-menu" aria-label="Abrir menu">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- Lado direito do header - Adaptado -->
+      <div class="header-right">
+        <!-- Botão de contato -->
+        <button class="contact-btn">Contato</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navegação Mobile -->
+  <nav class="mobile-nav">
+    <a href="./Paginas/Sobre.html" class="mobile-nav-link">Sobre</a>
+    <a href="#servicos" class="mobile-nav-link">Serviços</a>
+    <a href="#depoimentos" class="mobile-nav-link">Depoimentos</a>
+    <a href="#contato" class="mobile-nav-link">Contato</a>
+    <button class="mobile-contact-btn">Contato</button>
+  </nav>
+
+  <!-- Conteúdo principal da Ubistart adaptado -->
+  <main class="main">
+    <div class="container">
+      <div class="content-grid">
+        <!-- Lado esquerdo - Título principal -->
+        <div class="hero-content">
+          <h1 class="hero-title">
+            Desenvolvimento<br>
+            De Sites <br>
+            Sob Medida<br>
+            <span class="highlight">Feitos para Você.</span>
+          </h1>
+
+          <button class="cta-button">
+            Fale com um expert
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4.16667 10H15.8333M15.8333 10L10.8333 5M15.8333 10L10.8333 15" stroke="currentColor"
+                stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Lado direito - Card de informações com novo tab menu -->
+        <div class="info-section">
+          <div class="info-box">
+            <div class="tab-menu">
+              <button class="tab-button active" data-tab="desenvolver">Quero desenvolver</button>
+              <button class="tab-button" data-tab="tenho-software">Já tenho software</button>
+            </div>
+
+            <div id="desenvolver" class="tab-content active">
+              <p>A K.A.D.A ajuda empresas a conquistar seu mercado entregando análise, construção e implementação de
+                software, com agilidade, inovação e personalização.</p>
+            </div>
+
+            <div id="tenho-software" class="tab-content">
+              <p>A K.A.D.A oferece suporte técnico, melhorias contínuas e integração com novas tecnologias para tornar
+                sua solução mais eficiente e moderna.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <section class="carrossel-infinite">
+    <div class="slider-infinite">
+
+      <div class="slide-infinite">
+        <img src="./img/imagem-1.jpeg" alt="">
+      </div>
+      <div class="slide-infinite">
+        <img src="./img/imagem-2.jpeg" alt="">
+      </div>
+      <div class="slide-infinite">
+        <img src="./img/imagem-3.jpeg" alt="">
+      </div>
+      <div class="slide-infinite">
+        <img src="./img/imagem-4.jpeg" alt="">
+      </div>
+      <div class="slide-infinite">
+        <img src="./img/imagem-5.jpeg" alt="">
+      </div>
+      <div class="slide-infinite">
+        <img src="./img/imagem-6.jpeg" alt="">
+      </div>
+
+      <!--Img duplicadas-->
+
+      <div class="slide-infinite">
+        <img src="./img/imagem-1.jpeg" alt="">
+      </div>
+      <div class="slide-infinite">
+        <img src="./img/imagem-2.jpeg" alt="">
+      </div>
+      <div class="slide-infinite">
+        <img src="./img/imagem-3.jpeg" alt="">
+      </div>
+      <div class="slide-infinite">
+        <img src="./img/imagem-4.jpeg" alt="">
+      </div>
+      <div class="slide-infinite">
+        <img src="./img/imagem-5.jpeg" alt="">
+      </div>
+      <div class="slide-infinite">
+        <img src="./img/imagem-6.jpeg" alt="">
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="servicos" class="servicos">
+    <h2>Nossos Serviços</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Consultoria Estratégica</h3>
+        <p>Análise de necessidades e planejamento digital.</p>
+      </div>
+      <div class="card">
+        <h3>Software Personalizado</h3>
+        <p>Web e mobile com alto desempenho e usabilidade.</p>
+      </div>
+      <div class="card">
+        <h3>Integrações e APIs</h3>
+        <p>Conectamos sistemas com segurança e flexibilidade.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção de Principais Soluções -->
+  <section class="principais-solucoes">
+    <h2>Principais <span>Soluções</span></h2>
+    <div class="solucoes-grid">
+
+      <div class="solucao-card">
+        <i class="fas fa-desktop"></i>
+        <h3>Infraestrutura de TI</h3>
+        <p>Arquitetura, redimensionamento, atualização e sustentação de tecnologia para otimização operacional.</p>
+      </div>
+
+      <div class="solucao-card">
+        <i class="fas fa-shield-alt"></i>
+        <h3>Cibersegurança</h3>
+        <p>As melhores e mais completas soluções de segurança do mercado disponíveis em uma arquitetura e inteligência
+          compatível com seu ambiente.</p>
+      </div>
+
+      <div class="solucao-card">
+        <i class="fas fa-network-wired"></i>
+        <h3>Conectividade</h3>
+        <p>Obtenha soluções que maximizem o desempenho de sua rede, oferecendo maior performance, disponibilidade e
+          segurança para a sua operação.</p>
+      </div>
+
+      <div class="solucao-card">
+        <i class="fas fa-cogs"></i>
+        <h3>Transformação Digital</h3>
+        <p>Incorporamos as tecnologias mais avançadas na criação de projetos que otimizam recursos e elevam a eficiência
+          do seu negócio melhorando a experiência de seus clientes.</p>
+      </div>
+
+      <div class="solucao-card">
+        <i class="fas fa-cloud"></i>
+        <h3>Cloud</h3>
+        <p>Projetos de migração, dimensionamento, arquitetura e adequação para levar aplicações e negócios para a nuvem.
+        </p>
+      </div>
+
+      <div class="solucao-card">
+        <i class="fas fa-handshake"></i>
+        <h3>Desenvolvimento em Cooperação</h3>
+        <p>Conheça esta modalidade que pode materializar sua ideia em uma aplicação digital adequada para o seu negócio.
+        </p>
+      </div>
+
+      <div class="solucao-card">
+        <i class="fas fa-code"></i>
+        <h3>Projeto SAP</h3>
+        <p>Conversões, rollouts e upgrades eficientes com a agilidade e confiabilidade que seu negócio precisa.</p>
+      </div>
+
+      <div class="solucao-card">
+        <i class="fas fa-users"></i>
+        <h3>Squads Especializados de TI</h3>
+        <p>O nosso talento é identificar e selecionar os melhores profissionais de TI do mercado para compor squads sob
+          medida para seus projetos.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!--Depoimentos-->
+  <section id="depoimentos" class="depoimentos">
+    <h2>O que dizem nossos clientes</h2>
+    <div class="carrossel">
+      <div class="item-card ativo">
+        <div class="card-depoimento">
+          <p>"A equipe da K.A.D.A. Systems entregou um sistema impecável! Estamos mais eficientes do que nunca."</p>
+          <span>— João Mendes, TechNova</span>
+        </div>
+      </div>
+      <div class="item-card">
+        <div class="card-depoimento">
+          <p>"Desde o primeiro contato com a K.A.D.A., senti confiança e profissionalismo. Recomendo demais!"</p>
+          <span>— Camila Rocha, AutoByte</span>
+        </div>
+      </div>
+      <div class="item-card">
+        <div class="card-depoimento">
+          <p>"A inteligência artificial aplicada trouxe resultados surpreendentes em nossa análise de dados feita pela
+            K.A.D.A. Systems."</p>
+          <span>— Rafael Lima, Neurovia</span>
+        </div>
+      </div>
+      <div class="item-card">
+        <div class="card-depoimento">
+          <p>"Excelente trabalho! A equipe da K.A.D.A. é muito competente e o resultado final ficou incrível.
+            Definitivamente voltaremos a trabalhar juntos em futuros projetos."</p>
+          <span>— Dean Sanches, PNHUB</span>
+        </div>
+      </div>
+    </div>
+    <div class="dots-container">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </section>
+  <!--Depoimentos Fim-->
+  <!-- Contato -->
+  <section id="contato" class="contact-section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h2>Entre em Contato</h2>
+          <p>Estamos prontos para discutir seu projeto e encontrar a melhor solução para suas necessidades.</p>
+
+          <div class="contact-methods">
+            <div class="contact-method">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <h4>Email</h4>
+                <p>kadaempresads@gmail.com</p>
+              </div>
+            </div>
+            <div class="contact-method">
+              <i class="fas fa-phone"></i>
+              <div>
+                <h4>Telefone</h4>
+                <p>+55 (41) 99214-3478</p>
+              </div>
+            </div>
+            <div class="contact-method">
+              <i class="fas fa-map-marker-alt"></i>
+              <div>
+                <h4>Localização</h4>
+                <p>Curitiba, Paraná, Brasil</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulário -->
+
+        <div class="contact-form">
+          <form onsubmit="enviarFormulario(event)">
+            <div class="form-group">
+              <input type="text" id="name" name="name" placeholder="Seu nome" required>
+            </div>
+            <div class="form-group">
+              <input type="email" id="email" name="email" placeholder="Seu email" required>
+            </div>
+            <div class="form-group">
+              <input type="tel" id="phone" name="phone" placeholder="Seu telefone">
+            </div>
+
+            <div class="form-group">
+              <select id="service" name="service" required>
+                <option value="">Selecione um serviço</option>
+                <option value="desenvolvimento-web">Desenvolvimento Web</option>
+                <option value="aplicativo-mobile">Aplicativo Mobile</option>
+                <option value="inteligencia-artificial">Inteligência Artificial</option>
+                <option value="solucoes-cloud">Soluções Cloud</option>
+                <option value="ciberseguranca">Cibersegurança</option>
+                <option value="consultoria-digital">Consultoria Digital</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <textarea id="message" name="message" placeholder="Descreva seu projeto" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn-submit" name="submit">
+              <span>Enviar Mensagem</span>
+              <i class="fas fa-paper-plane"></i>
+            </button>
+            <p id="resposta"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>K.A.D.A. Systems</h3>
+          <p>Transformando ideias em soluções digitais seguras e escaláveis desde 2020.</p>
+          <div class="social-links">
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h4>Serviços</h4>
+          <ul>
+            <li><a href="./Paginas/servicos.html">Desenvolvimento Web</a></li>
+            <li><a href="./Paginas/servicos.html">Aplicativos Mobile</a></li>
+            <li><a href="./Paginas/servicos.html">Inteligência Artificial</a></li>
+            <li><a href="./Paginas/servicos.html">Soluções Cloud</a></li>
+            <li><a href="./Paginas/servicos.html">Cibersegurança</a></li>
+            <li><a href="./Paginas/servicos.html">Consultoria Digital</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Empresa</h4>
+          <ul>
+            <li><a href="#">Sobre Nós</a></li>
+            <li><a href="#">Nossa Equipe</a></li>
+            <li><a href="#">Carreiras</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Casos de Sucesso</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contato</h4>
+          <div class="contact-info">
+            <p><i class="fas fa-envelope"></i> kadaempresa@gmail.com</p>
+            <p><i class="fas fa-phone"></i> +55 (41) 99214-3478</p>
+            <p><i class="fas fa-map-marker-alt"></i> Curitiba, PR, Brasil</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 K.A.D.A. Systems - Todos os direitos reservados</p>
+        <div class="footer-links">
+          <a href="#">Política de Privacidade</a>
+          <a href="#">Termos de Uso</a>
+          <a href="#">LGPD</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/5541992143478?text=Olá estou entrando em contato para Desenvolver um site para a minha Empresa."
+    class="whatsapp-float" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/2044px-WhatsApp.svg.png"
+      alt="WhatsApp">
+  </a>
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script defer src="emailjs-config.js"></script>
+  <script defer src="index.js"></script>
+  <!--<script src="db.js"></script>
+  <script src="server.js"></script>
+  <script src="user.js"></script>-->
+</body>
+
+<script>
+async function enviarFormulario(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const message = document.getElementById("message").value;
+
+  const response = await fetch("send-email.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ name, email, message })
+  });
+
+  const result = await response.json();
+  alert(result.message);
+}
+</script>
+
+</html>
